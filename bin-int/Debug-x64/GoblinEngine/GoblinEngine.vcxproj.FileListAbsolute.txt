@@ -1,0 +1,2 @@
+C:\Users\dencr\source\repos\GoblinEngine\bin\Debug-x64\GoblinEngine\GoblinEngine.pdb
+C:\Users\dencr\source\repos\GoblinEngine\bin-int\Debug-x64\GoblinEngine\GoblinEngine.pdb
