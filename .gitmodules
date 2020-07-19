@@ -1,0 +1,3 @@
+[submodule "GoblinEngine/vendor/spdlog"]
+	path = GoblinEngine/vendor/spdlog
+	url = https://github.com/gabime/spdlog.git
