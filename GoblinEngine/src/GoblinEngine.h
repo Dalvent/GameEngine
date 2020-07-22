@@ -1,8 +1,10 @@
 #pragma once
 
 // For use by GoblinEngine application
+#include "Engine/Game.h"
 
-#include "Engine/GameApplication.h"
+// Log
+#include "Engine/Log.h"
 
 // Entry point
 #include "Engine/EnteryPoint.h"

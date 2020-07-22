@@ -1,13 +1,17 @@
 #pragma once
-#include "../GoblinEngine.h";
 
 #ifdef GE_PLATFORM_WINDOWS
 
-extern GoblinEngine::GameApplication* GoblinEngine::CreateApplication();
+extern GoblinEngine::Game* GoblinEngine::CreateGame();
 
 int main(int arc, char** argv)
 {
-	auto app = GoblinEngine::CreateApplication();
+	GoblinEngine::Log::Init();
+
+	GoblinEngine::Log::GetCoreLogger()->warn("12131234");
+	GoblinEngine::Log::GetClientLogger()->info("12131234");
+
+	auto app = new GoblinEngine::Game();
 	app->Run();
 	delete app;
 }
