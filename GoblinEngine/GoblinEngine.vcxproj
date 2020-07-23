@@ -133,11 +133,17 @@
   <ItemGroup>
     <ClInclude Include="src\Engine\Core.h" />
     <ClInclude Include="src\Engine\EnteryPoint.h" />
+    <ClInclude Include="src\Engine\Event\AppEvent.h" />
+    <ClInclude Include="src\Engine\Event\Event.h" />
+    <ClInclude Include="src\Engine\Event\KeyEvent.h" />
+    <ClInclude Include="src\Engine\Event\MouseEvent.h" />
+    <ClInclude Include="src\Engine\Game.h" />
     <ClInclude Include="src\Engine\GameApplication.h" />
     <ClInclude Include="src\Engine\Log.h" />
     <ClInclude Include="src\GoblinEngine.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Engine\Game.cpp" />
     <ClCompile Include="src\Engine\GameApplication.cpp" />
     <ClCompile Include="src\Engine\Log.cpp" />
   </ItemGroup>

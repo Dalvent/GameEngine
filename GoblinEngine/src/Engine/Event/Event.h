@@ -12,7 +12,7 @@ namespace GoblinEngine
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
 		KeyDown, KeyPressed, KeyTyped,
-		MouseButtonDown, MouseButtonUp, MouseMoved, MouseScrolled
+		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 
 	enum EventCategory
@@ -21,8 +21,7 @@ namespace GoblinEngine
 		EventCategoryApp			= BIT(0),
 		EventCategoryInput          = BIT(1),
 		EventCategoryKeyboard       = BIT(2),
-		EventCategoryMouse          = BIT(3),
-		EventCategoryMouseButton    = BIT(4)
+		EventCategoryMouse          = BIT(3)
 	};
 
 #define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::type; }\

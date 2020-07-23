@@ -19,6 +19,19 @@
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="src\GoblinEngine.h" />
+    <ClInclude Include="src\Engine\Event\AppEvent.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Event\Event.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Event\KeyEvent.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Event\MouseEvent.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Game.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\GameApplication.cpp">
@@ -27,5 +40,6 @@
     <ClCompile Include="src\Engine\Log.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Game.cpp" />
   </ItemGroup>
 </Project>
