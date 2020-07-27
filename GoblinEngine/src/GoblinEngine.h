@@ -1,5 +1,7 @@
 #pragma once
 
+#include "pch.h"
+
 // For use by GoblinEngine application
 #include "Engine/Game.h"
 

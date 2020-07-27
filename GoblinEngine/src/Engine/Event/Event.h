@@ -1,8 +1,7 @@
 #pragma once
+#include "pch.h"
 
-#include "src/Engine/Core.h"
-#include <string>
-#include <sstream>
+#include "Engine/Core.h"
 
 namespace GoblinEngine
 {
@@ -47,6 +46,31 @@ namespace GoblinEngine
 			return GetCategoryFlags() & category;
 		}
 	};
+
+	class EventDispatcher
+	{
+	public:
+		EventDispatcher(Event& event)
+			: _event(event)
+		{
+		}
+
+		// F will be deduced by the compiler
+		template<typename T, typename F>
+		bool Dispatch(const F& func)
+		{
+			if (_event.GetEventType() == T::GetStaticType())
+			{
+				_event.Handled = func(static_cast<T&>(_event));
+				return true;
+			}
+			return false;
+		}
+	private:
+		Event& _event;
+	};
+
+
 
 	inline std::ostream& operator<<(std::ostream& os, const Event& e)
 	{

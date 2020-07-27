@@ -1,7 +1,7 @@
 #include <iostream>
 #include <GoblinEngine.h>
 
-class SandBox : public GoblinEngine::GameApplication
+class SandBox : public GoblinEngine::Game
 {
 public:
 	SandBox()
@@ -16,7 +16,7 @@ private:
 
 };
 
-GoblinEngine::GameApplication* GoblinEngine::CreateApplication()
+GoblinEngine::Game* GoblinEngine::CreateGame()
 {
 	return new SandBox();
 }

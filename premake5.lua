@@ -1,5 +1,6 @@
 workspace "GoblinEngine"
-    architecture "x64"
+    architecture "x86_64"
+    startproject "SandBox"
 
     configurations
     {
@@ -10,36 +11,51 @@ workspace "GoblinEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "GoblinEngine/vendor/GLFW/include"
+
+include "GoblinEngine/vendor/GLFW"
+
 project "GoblinEngine"
     location "GoblinEngine"
     kind "SharedLib"
-    language "C++"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+    pchheader "pch.h"
+    pchsource "GoblinEngine/src/pch.cpp"
+    
     files
     {
         "%{prj.name}/src/**.h",
         "%{prj.name}/src/**.cpp"
     }
 
-    includedirs
+    defines
     {
-        "%{prj.name}/vendor/spdlog/include"
+        "GE_PLATFORM_WINDOWS",
+        "GE_BUILD_DLL"
     }
 
+    includedirs
+    {
+        "%{prj.name}/src",
+        "%{prj.name}/vendor/spdlog/include",
+        "%{IncludeDir.GLFW}"
+    }
+
+    links
+    {
+        "GLFW",
+        "opengl32.lib"
+	}
+
     filter "system:windows"
-        cppdialect "C++17"
-        staticruntime "On"
-        systemversion "10.0.18362.0"
-
-
-        defines
-        {
-            "GE_PLATFORM_WINDOWS",
-            "GE_BUILD_DLL",
-        }
+        systemversion "latest"
 
         postbuildcommands
         {
@@ -61,7 +77,9 @@ project "GoblinEngine"
 project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
-    language "C++"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
     
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -72,6 +90,11 @@ project "Sandbox"
         "%{prj.name}/src/**.cpp"
     }
     
+    defines
+    {
+        "GE_PLATFORM_WINDOWS"
+    }
+
     includedirs
     {
         "GoblinEngine/src",
@@ -86,28 +109,23 @@ project "Sandbox"
     filter "system:windows"
         cppdialect "C++17"
         staticruntime "On"
-        systemversion "10.0.18362.0"
+        systemversion "latest"
     
     
         defines
         {
-            "GE_PLATFORM_WINDOWS",
-            "GE_BUILD_DLL",
+            "GE_PLATFORM_WINDOWS"
         }
+
+        
+    filter "configurations:Debug"
+        defines "GE_DEBUG"
+        symbols "On"
     
-        postbuildcommands
-        {
-            ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
-        }
-        
-        filter "configurations:Debug"
-            defines "GE_DEBUG"
-            symbols "On"
-        
-        filter "configurations:Relese"
-            defines "GE_RELEASE"
+    filter "configurations:Relese"
+        defines "GE_RELEASE"
             symbols "On" 
     
-        filter "configurations:Dis"
-            defines "GE_DIST"
-            symbols "On"
+    filter "configurations:Dis"
+        defines "GE_DIST"
+        symbols "On"
