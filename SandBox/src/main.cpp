@@ -1,6 +1,21 @@
 #include <iostream>
 #include <GoblinEngine.h>
 
+class SuckLayer : public GoblinEngine::Layer
+{
+public:
+	SuckLayer(std::string name) 
+		: Layer(name)
+	{
+
+	}
+
+	void OnEvent(GoblinEngine::Event& event) override
+	{
+		GE_CORE_INFO("I SUCKK!!!!!")
+	}
+};
+
 class SandBox : public GoblinEngine::Game
 {
 public:
@@ -18,5 +33,8 @@ private:
 
 GoblinEngine::Game* GoblinEngine::CreateGame()
 {
-	return new SandBox();
+	auto game = new SandBox();
+	game->AddLayer(new SuckLayer("Some"));
+
+	return game;
 }

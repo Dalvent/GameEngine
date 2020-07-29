@@ -8,7 +8,7 @@ int main(int arc, char** argv)
 {
 	GoblinEngine::Log::Init();
 
-	auto app = new GoblinEngine::Game();
+	auto app = GoblinEngine::CreateGame();
 	app->Run();
 	delete app;
 }

@@ -10,7 +10,7 @@ namespace GoblinEngine
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
-		KeyDown, KeyPressed, KeyTyped,
+		KeyReleased, KeyPressed, KeyTyped,
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 

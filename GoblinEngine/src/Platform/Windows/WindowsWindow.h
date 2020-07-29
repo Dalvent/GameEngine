@@ -2,7 +2,7 @@
 
 #include "Platform/Window.h"
 
-#include <GLFW/glfw3.h>
+struct GLFWwindow;
 
 namespace GoblinEngine
 {
@@ -16,7 +16,7 @@ namespace GoblinEngine
 
 		unsigned int GetWidth() const override { return _data.width; }
 		unsigned int GetHeight() const override { return _data.height; }
-		
+
 		void SetEventCallback(const EventCallbackFunc& callback) override { _data.eventCallback = callback; }
 
 		void SetVSync(bool enabled) override;
@@ -34,8 +34,8 @@ namespace GoblinEngine
 			EventCallbackFunc eventCallback;
 		};
 
-		GLFWwindow* _glfwWindow;
 		WindowData _data;
+		GLFWwindow* _glfwWindow;
 
 		virtual void Init(const WindowProps& props);
 		virtual void Shutdow();

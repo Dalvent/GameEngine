@@ -13,8 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "GoblinEngine/vendor/GLFW/include"
+IncludeDir["GLAD"] = "GoblinEngine/vendor/GLAD/include"
 
 include "GoblinEngine/vendor/GLFW"
+include "GoblinEngine/vendor/GLAD"
 
 project "GoblinEngine"
     location "GoblinEngine"
@@ -38,19 +40,22 @@ project "GoblinEngine"
     defines
     {
         "GE_PLATFORM_WINDOWS",
-        "GE_BUILD_DLL"
+        "GE_BUILD_DLL",
+        "GLFW_INCLUDE_NONE"
     }
 
     includedirs
     {
         "%{prj.name}/src",
         "%{prj.name}/vendor/spdlog/include",
-        "%{IncludeDir.GLFW}"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.GLAD}"
     }
 
     links
     {
         "GLFW",
+        "GLAD",
         "opengl32.lib"
 	}
 
@@ -64,14 +69,17 @@ project "GoblinEngine"
     
     filter "configurations:Debug"
         defines "GE_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
     
     filter "configurations:Relese"
         defines "GE_RELEASE"
+        buildoptions "/MD"
         symbols "On" 
-
+    
     filter "configurations:Dis"
         defines "GE_DIST"
+        buildoptions "/MD"
         symbols "On"
 
 project "Sandbox"
@@ -120,12 +128,15 @@ project "Sandbox"
         
     filter "configurations:Debug"
         defines "GE_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
     
     filter "configurations:Relese"
         defines "GE_RELEASE"
-            symbols "On" 
+        buildoptions "/MD"
+        symbols "On" 
     
     filter "configurations:Dis"
         defines "GE_DIST"
+        buildoptions "/MD"
         symbols "On"

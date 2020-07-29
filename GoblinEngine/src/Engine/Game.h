@@ -2,6 +2,8 @@
 
 #include "Core.h"
 #include "Platform/Window.h"
+#include "Engine/Layer.h"
+#include "Engine/LayerList.h"
 
 namespace GoblinEngine
 {
@@ -12,7 +14,12 @@ namespace GoblinEngine
 		virtual ~Game();
 
 		void Run();
+		void OnEvent(Event& e);
+
+		void AddLayer(Layer* layer);
+		void RemoveLayer(Layer* layer);
 	private:
+		LayerList _layerList;
 		std::unique_ptr<Window> _window;
 		bool _running = true;
 	};

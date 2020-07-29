@@ -22,76 +22,59 @@ namespace GoblinEngine
 	class KeyPressedEvent : public KeyEvent
 	{
 	public:
-		KeyPressedEvent(KeyCode keyCode) :
+		KeyPressedEvent(KeyCode keyCode, int repeatCount) :
+			KeyEvent(keyCode), _repeatCount(repeatCount)
+		{
+		}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "KeyPressedEvent: " << _keyCode << " (" << _repeatCount << " repeats)";
+			return ss.str();
+		}
+		
+		KeyCode GetKeyCode() const { return _keyCode; }
+		EVENT_CLASS_TYPE(KeyPressed)
+	private:
+		int _repeatCount;
+	};
+
+	class KeyReleasedEvent : public KeyEvent
+	{
+	public:
+		KeyReleasedEvent(KeyCode keyCode) :
 			KeyEvent(keyCode)
 		{
 		}
 		
-		KeyCode GetKeyCode() const { return _keyCode; }
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "KeyReleasedEvent: " << _keyCode;
+			return ss.str();
+		}
 
 		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryKeyboard)
-	private:
-		KeyCode _keyCode;
+		EVENT_CLASS_TYPE(KeyReleased)
 	};
 
-	class KeyReleasedEvent : public Event
+	class KeyTypedEvent : public KeyEvent
 	{
 	public:
-		KeyReleasedEvent()
+		KeyTypedEvent(KeyCode keyCode) :
+			KeyEvent(keyCode)
 		{
 		}
 
-		EVENT_CLASS_TYPE(KeyReleased)
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "KeyReleasedEvent: " << _keyCode;
+			return ss.str();
+		}
+
 		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryKeyboard)
-	};
-
-	class KeyTypedEvent : public Event
-	{
-	public:
-		KeyTypedEvent() = default;
-		~KeyTypedEvent() = default;
-
 		EVENT_CLASS_TYPE(KeyTyped)
-		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryKeyboard)
-	};
-
-	class MouseButtonDownEvent : public Event
-	{
-	public:
-		MouseButtonDownEvent() = default;
-		~MouseButtonDownEvent() = default;
-
-		EVENT_CLASS_TYPE(MouseButtonDown)
-		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryKeyboard)
-	};
-
-	class MouseButtonUpEvent : public Event
-	{
-	public:
-		MouseButtonUpEvent() = default;
-		~MouseButtonUpEvent() = default;
-
-		EVENT_CLASS_TYPE(MouseButtonUp)
-		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryKeyboard)
-	};
-
-	class MouseMovedEvent : public Event
-	{
-	public:
-		MouseMovedEvent() = default;
-		~MouseMovedEvent() = default;
-
-		EVENT_CLASS_TYPE(MouseMoved)
-		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryKeyboard)
-	};
-
-	class MouseScrolledEvent : public Event
-	{
-	public:
-		MouseScrolledEvent() = default;
-		~MouseScrolledEvent() = default;
-
-		EVENT_CLASS_TYPE(MouseScrolled)
-		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryKeyboard)
 	};
 }
