@@ -97,13 +97,13 @@ namespace GoblinEngine
 			_data.eventCallback(event);
 		});
 
-		glfwSetKeyCallback(_glfwWindow, [](GLFWwindow* window, int key, int scancode, int action, int mods)
+		glfwSetKeyCallback(_glfwWindow, [](GLFWwindow* window, KeyCode key, int scancode, int action, int mods)
 		{
 			auto& _data = *(WindowData*)glfwGetWindowUserPointer(window);
 			
 			KeyEvent* event;
 
-			switch (scancode)
+			switch (action)
 			{
 			case GLFW_PRESS:
 				event = &KeyPressedEvent(key, 0);
@@ -121,7 +121,15 @@ namespace GoblinEngine
 			_data.eventCallback(*event);
 		});
 
-		glfwSetMouseButtonCallback(_glfwWindow, [](GLFWwindow* window, int button, int action, int mods)
+		glfwSetCharCallback(_glfwWindow, [](GLFWwindow* window, unsigned int keycode)
+		{
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			auto event = KeyTypedEvent(keycode);
+
+			data.eventCallback(event);
+		});
+
+		glfwSetMouseButtonCallback(_glfwWindow, [](GLFWwindow* window, MouseKeyCode button, int action, int mods)
 		{
 			auto& _data = *(WindowData*)glfwGetWindowUserPointer(window);
 			MouseButtonEvent* event;
@@ -144,7 +152,7 @@ namespace GoblinEngine
 		glfwSetScrollCallback(_glfwWindow, [](GLFWwindow* window, double xOffset, double yOffset)
 		{
 			auto& _data = *(WindowData*)glfwGetWindowUserPointer(window);
-			auto event = MouseMovedEvent(xOffset, yOffset);
+			auto event = MouseScrolledEvent(xOffset, yOffset);
 			_data.eventCallback(event);
 		});
 

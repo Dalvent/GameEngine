@@ -4,19 +4,17 @@
 class SuckLayer : public GoblinEngine::Layer
 {
 public:
-	SuckLayer(std::string name) 
-		: Layer(name)
+	SuckLayer() 
+		: Layer("SuckLayer")
 	{
-
 	}
 
 	void OnEvent(GoblinEngine::Event& event) override
 	{
-		GE_CORE_INFO("I SUCKK!!!!!")
 	}
 };
 
-class SandBox : public GoblinEngine::Game
+class SandBox : public GoblinEngine::Application
 {
 public:
 	SandBox()
@@ -31,10 +29,10 @@ private:
 
 };
 
-GoblinEngine::Game* GoblinEngine::CreateGame()
+GoblinEngine::Application* GoblinEngine::CreateGame()
 {
 	auto game = new SandBox();
-	game->AddLayer(new SuckLayer("Some"));
+	game->AddLayer(new ImGUILayer());
 
 	return game;
 }

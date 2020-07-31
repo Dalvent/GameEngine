@@ -7,14 +7,20 @@
     <Filter Include="Engine\Event">
       <UniqueIdentifier>{6C812495-58E4-B339-016A-ECEFEDAB7FBC}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platform">
-      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    <Filter Include="Engine\ImGUI">
+      <UniqueIdentifier>{05716795-F1D3-F639-9A59-2FF0869BC2BC}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platform\Windows">
-      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    <Filter Include="Engine\Platform">
+      <UniqueIdentifier>{8F0ABC95-FB95-295A-04A7-AC4E70B1855A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Platform\Windows">
+      <UniqueIdentifier>{C9D3B605-350B-FF9C-3E15-63C0AACB2596}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Engine\Application.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
     <ClInclude Include="src\Engine\Core.h">
       <Filter>Engine</Filter>
     </ClInclude>
@@ -33,8 +39,8 @@
     <ClInclude Include="src\Engine\Event\MouseEvent.h">
       <Filter>Engine\Event</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Game.h">
-      <Filter>Engine</Filter>
+    <ClInclude Include="src\Engine\ImGUI\ImGUILayer.h">
+      <Filter>Engine\ImGUI</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Layer.h">
       <Filter>Engine</Filter>
@@ -45,18 +51,22 @@
     <ClInclude Include="src\Engine\Log.h">
       <Filter>Engine</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Platform\Window.h">
+      <Filter>Engine\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Platform\Windows\WindowsWindow.h">
+      <Filter>Engine\Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\GoblinEngine.h" />
-    <ClInclude Include="src\Platform\Window.h">
-      <Filter>Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
-      <Filter>Platform\Windows</Filter>
-    </ClInclude>
     <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\Engine\Platform\OpenGL\ImGUIOpenGLRenderer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Engine\Game.cpp">
+    <ClCompile Include="src\Engine\Application.cpp">
       <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\ImGUI\ImGUILayer.cpp">
+      <Filter>Engine\ImGUI</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\LayerList.cpp">
       <Filter>Engine</Filter>
@@ -64,9 +74,10 @@
     <ClCompile Include="src\Engine\Log.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
-      <Filter>Platform\Windows</Filter>
+    <ClCompile Include="src\Engine\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Engine\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\pch.cpp" />
+    <ClCompile Include="src\Engine\Platform\OpenGL\ImGUIOpenGLRenderer.cpp" />
   </ItemGroup>
 </Project>

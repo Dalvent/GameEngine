@@ -22,6 +22,9 @@ namespace GoblinEngine
 			return ss.str();
 		}
 
+		MouseKeyCode GetX() { return _x; }
+		MouseKeyCode GetY() { return _y; }
+
 		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse)
 		EVENT_CLASS_TYPE(MouseMoved)
 	private:
@@ -40,12 +43,15 @@ namespace GoblinEngine
 		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "MouseMovedEvent: " << _offsetX << " " << _offsetY;
+			ss << "MouseScrolled: " << _offsetX << " " << _offsetY;
 			return ss.str();
 		}
 
+		MouseKeyCode GetOffsetX() { return _offsetX; }
+		MouseKeyCode GetOffsetY() { return _offsetY; }
+
 		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse)
-			EVENT_CLASS_TYPE(MouseMoved)
+		EVENT_CLASS_TYPE(MouseScrolled)
 	private:
 		float _offsetX;
 		float _offsetY;

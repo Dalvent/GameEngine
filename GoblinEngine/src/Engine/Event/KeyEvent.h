@@ -55,7 +55,6 @@ namespace GoblinEngine
 			return ss.str();
 		}
 
-		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryKeyboard)
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
 
@@ -74,7 +73,6 @@ namespace GoblinEngine
 			return ss.str();
 		}
 
-		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryKeyboard)
 		EVENT_CLASS_TYPE(KeyTyped)
 	};
 }

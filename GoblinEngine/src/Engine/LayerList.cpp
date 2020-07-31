@@ -14,9 +14,7 @@ namespace GoblinEngine
 
 	void LayerList::Add(Layer* layer)
 	{
-		std::cout << _layers.size();
 		_layers.emplace_back(layer);
-		std::cout << _layers.size();
 	}
 
 	void LayerList::Remove(Layer* layer)

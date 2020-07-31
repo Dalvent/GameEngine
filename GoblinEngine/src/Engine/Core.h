@@ -18,4 +18,6 @@
 	#define GE_CORE_ASSERT(x, ...)
 #endif
 
-#define BIT(x) (1 << x)
+#define GE_BIT(x) (1 << x)
+
+#define GE_BIND_EVENT(eventFunction) std::bind(&eventFunction, this, std::placeholders::_1)

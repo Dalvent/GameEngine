@@ -17,10 +17,10 @@ namespace GoblinEngine
 	enum EventCategory
 	{
 		None                        = 0,
-		EventCategoryApp			= BIT(0),
-		EventCategoryInput          = BIT(1),
-		EventCategoryKeyboard       = BIT(2),
-		EventCategoryMouse          = BIT(3)
+		EventCategoryApp			= GE_BIT(0),
+		EventCategoryInput          = GE_BIT(1),
+		EventCategoryKeyboard       = GE_BIT(2),
+		EventCategoryMouse          = GE_BIT(3)
 	};
 
 #define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::type; }\

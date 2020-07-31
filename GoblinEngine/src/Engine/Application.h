@@ -7,17 +7,22 @@
 
 namespace GoblinEngine
 {
-	class ENGINE_API Game
+	class ENGINE_API Application
 	{
 	public:
-		Game();
-		virtual ~Game();
+		Application();
+		virtual ~Application();
+
+		static Application& Get() { return *_instance; }
+		Window& GetWindow() { return *_window; }
 
 		void Run();
 		void OnEvent(Event& e);
-
+			
 		void AddLayer(Layer* layer);
 		void RemoveLayer(Layer* layer);
+	private:
+		static Application* _instance;
 	private:
 		LayerList _layerList;
 		std::unique_ptr<Window> _window;
@@ -25,5 +30,5 @@ namespace GoblinEngine
 	};
 
 	// To be defined in Client
-	Game* CreateGame();
+	Application* CreateGame();
 }

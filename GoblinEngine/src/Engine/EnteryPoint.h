@@ -2,7 +2,7 @@
 
 #ifdef GE_PLATFORM_WINDOWS
 
-extern GoblinEngine::Game* GoblinEngine::CreateGame();
+extern GoblinEngine::Application* GoblinEngine::CreateGame();
 
 int main(int arc, char** argv)
 {
