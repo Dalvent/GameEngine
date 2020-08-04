@@ -3,14 +3,14 @@
 #include "pch.h"
 
 // For use by GoblinEngine application
-#include "Engine/Application.h"
+#include "Engine/Core/GameApplication.h"
 
 // For layers
-#include "Engine/Layer.h"
+#include "Engine/Core/Layer.h"
 #include "Engine/ImGUI/ImGUILayer.h"
 
 // Log
-#include "Engine/Log.h"
+#include "Engine/Core/Log.h"
 
 // Entry point
-#include "Engine/EnteryPoint.h"
+#include "Engine/Core/EnteryPoint.h"

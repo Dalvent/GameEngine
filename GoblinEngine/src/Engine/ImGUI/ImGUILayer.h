@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Engine/Layer.h"
+#include "Engine/Core/Layer.h"
 
-#include "Engine/Event/AppEvent.h"
-#include "Engine/Event/KeyEvent.h"
-#include "Engine/Event/MouseEvent.h"
+#include "Engine/Events/AppEvent.h"
+#include "Engine/Events/KeyEvent.h"
+#include "Engine/Events/MouseEvent.h"
 
 namespace GoblinEngine
 {

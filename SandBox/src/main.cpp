@@ -1,5 +1,6 @@
 #include <iostream>
 #include <GoblinEngine.h>
+#include <glm/vec2.hpp>
 
 class SuckLayer : public GoblinEngine::Layer
 {
@@ -14,7 +15,7 @@ public:
 	}
 };
 
-class SandBox : public GoblinEngine::Application
+class SandBox : public GoblinEngine::GameMode
 {
 public:
 	SandBox()
@@ -29,10 +30,9 @@ private:
 
 };
 
-GoblinEngine::Application* GoblinEngine::CreateGame()
+void GoblinEngine::SetupAppSettings(GoblinEngine::GameApplication& app)
 {
-	auto game = new SandBox();
-	game->AddLayer(new ImGUILayer());
-
-	return game;
+	app.SetGameMod(new SandBox());
+	app.AddLayer(new SuckLayer());
+	app.AddLayer(new ImGUILayer());
 }

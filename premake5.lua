@@ -14,6 +14,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "GoblinEngine/vendor/GLFW/include"
 IncludeDir["GLAD"] = "GoblinEngine/vendor/GLAD/include"
+IncludeDir["GLM"] = "GoblinEngine/vendor/GLM"
 IncludeDir["ImGUI"] = "GoblinEngine/vendor/ImGUI"
 
 include "GoblinEngine/vendor/GLFW"
@@ -36,7 +37,9 @@ project "GoblinEngine"
     files
     {
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl",
     }
 
     defines
@@ -52,6 +55,7 @@ project "GoblinEngine"
         "%{prj.name}/vendor/spdlog/include",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.GLAD}",
+        "%{IncludeDir.GLM}",
         "%{IncludeDir.ImGUI}"
     }
 
@@ -110,7 +114,8 @@ project "Sandbox"
     includedirs
     {
         "GoblinEngine/src",
-        "GoblinEngine/vendor/spdlog/include"
+        "GoblinEngine/vendor/spdlog/include",
+        "%{IncludeDir.GLM}"
     }
 
     links

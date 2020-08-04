@@ -3,9 +3,9 @@
 #include "ImGUILayer.h"
 #include "imgui.h"
 
-#include "Engine/Core.h"
-#include "Engine/Application.h"
-#include "Engine/Platform/OpenGL/ImGUIOpenGLRenderer.h"
+#include "Engine/Core/Base.h"
+#include "Engine/Core/GameApplication.h"
+#include "Platforms/OpenGL/ImGUIOpenGLRenderer.h"
 
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
@@ -58,7 +58,7 @@ namespace GoblinEngine
 	void ImGUILayer::OnUpdate()
 	{
 		ImGuiIO& io = ImGui::GetIO();
-		Window& window = Application::Get().GetWindow();
+		Window& window = GameApplication::Get().GetWindow();
 		io.DisplaySize = ImVec2(window.GetWidth(), window.GetHeight());
 
 		float time = (float)glfwGetTime();

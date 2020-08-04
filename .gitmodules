@@ -7,3 +7,6 @@
 [submodule "GoblinEngine/vendor/ImGUI"]
 	path = GoblinEngine/vendor/ImGUI
 	url = https://github.com/TheCherno/imgui.git
+[submodule "GoblinEngine/vendor/GoblinEngine/vendor/GLM"]
+	path = GoblinEngine/vendor/GLM
+	url = https://github.com/g-truc/glm.git
