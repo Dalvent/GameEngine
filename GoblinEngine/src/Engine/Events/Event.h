@@ -2,6 +2,7 @@
 #include "pch.h"
 
 #include "Engine/Core/Base.h"
+#include "Engine/Window/Input/KeyCode.h"
 
 namespace GoblinEngine
 {

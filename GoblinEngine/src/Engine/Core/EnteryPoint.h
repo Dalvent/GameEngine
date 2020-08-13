@@ -1,20 +1,25 @@
-#pragma once
-#include "Platforms/Windows/WindowsPlatform.h"
-#ifdef GE_PLATFORM_WINDOWS
-#else
-	#error Supported platform not selected.
-#endif
 
 extern void GoblinEngine::SetupAppSettings(GoblinEngine::GameApplication& app);
-
+#ifdef GE_PLATFORM_WINDOWS
+	#include "Engine/Window/Platforms/Windows/WindowsWindow.h"
+	#include "Engine/Window/Platforms/OpenGL/OpenGLApiFactory.h"
+#else
+	#error No supported platform selected! 
+#endif
 int main(int arc, char** argv)
 {
 	GoblinEngine::Log::Init();
-	GoblinEngine::GameApplication::CreateInstance(GoblinEngine::WindowsPlatform());
+
+#ifdef GE_PLATFORM_WINDOWS
+	 GoblinEngine::Window::SetInstance(new GoblinEngine::WindowsWindow(&(new WindowProps()), new GoblinEngine::OpenGLApiFactory()));
+#else
+#error No supported platform selected! 
+#endif
+	GoblinEngine::GameApplication::Init();
 
 	GoblinEngine::GameApplication& app = GoblinEngine::GameApplication::Get();
 	GoblinEngine::SetupAppSettings(app);
 	app.Run();
 
-	GoblinEngine::GameApplication::DeleteInstance();
+	GoblinEngine::GameApplication::Deinit();
 }

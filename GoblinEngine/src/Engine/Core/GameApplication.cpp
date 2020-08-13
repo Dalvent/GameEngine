@@ -1,26 +1,28 @@
 #include "pch.h"
+
 #include "GameApplication.h"
+#include "Engine/Window/Window.h"
+#include "Engine/ImGUI/ImGUILayer.h"
+
+#include <GLFW/glfw3.h>
 #include <glad/glad.h>
+
 namespace GoblinEngine
 {
 	GameApplication* GameApplication::_instance = nullptr;
 
-	void GameApplication::CreateInstance(Platform& platform)
+	GameApplication::GameApplication()
 	{
-		_instance = new GameApplication(platform);
+		GE_WINDOW.SetEventCallback(GE_BIND_EVENT(GameApplication::OnEvent));
 	}
 
-	void GameApplication::DeleteInstance()
+	void GameApplication::Init()
+	{
+		_instance = new GameApplication();
+	}
+	void GameApplication::Deinit()
 	{
 		delete _instance;
-	}
-
-	GameApplication::GameApplication(Platform& platform)
-	{
-		u_window = std::unique_ptr<Window>(platform
-			.CreatePlatformWindow(*(new WindowProps())));
-
-		u_window->SetEventCallback(GE_BIND_EVENT(GameApplication::OnEvent));
 	}
 
 	void GameApplication::SetGameMod(GameMode* gameMode)
@@ -44,6 +46,10 @@ namespace GoblinEngine
 	{
 		u_gameMode->OnBegin();
 		glClearColor(0.65f, 0.17f, 0.35f, 1);
+
+		auto imGuiLayer = new ImGUILayer();
+		this->AddLayer(imGuiLayer);
+
 		while (_running)
 		{
 			glClear(GL_COLOR_BUFFER_BIT);
@@ -51,10 +57,17 @@ namespace GoblinEngine
 			{
 				(*layer)->OnUpdate();
 			}
-			u_window->OnUpdate();
+
+			imGuiLayer->Start();
+			for (auto layer = _layerList.Begin(); layer != _layerList.End(); ++layer)
+			{
+				(*layer)->OnImGuiRender();
+			}
+			imGuiLayer->End();
+
+			GE_WINDOW.OnUpdate();
 			u_gameMode->OnUpdate();
 		}
-		u_gameMode->OnEnd();
 	}
 
 	void GameApplication::OnEvent(Event& e)

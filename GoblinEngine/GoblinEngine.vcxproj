@@ -23,19 +23,19 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
@@ -138,27 +138,31 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Debug\GoblinEngineD.h" />
+    <ClInclude Include="src\Debug\RenderTriangleLayer.h" />
     <ClInclude Include="src\Engine\Core\Base.h" />
     <ClInclude Include="src\Engine\Core\EnteryPoint.h" />
     <ClInclude Include="src\Engine\Core\GameApplication.h" />
     <ClInclude Include="src\Engine\Core\GameMode.h" />
-    <ClInclude Include="src\Engine\Core\Input.h" />
-    <ClInclude Include="src\Engine\Core\KeyCode.h" />
+    <ClInclude Include="src\Engine\Window\Input\Input.h" />
+    <ClInclude Include="src\Engine\Window\Input\KeyCode.h" />
     <ClInclude Include="src\Engine\Core\Layer.h" />
     <ClInclude Include="src\Engine\Core\LayerList.h" />
     <ClInclude Include="src\Engine\Core\Log.h" />
-    <ClInclude Include="src\Engine\Core\Window.h" />
+    <ClInclude Include="src\Engine\Window\Window.h" />
     <ClInclude Include="src\Engine\Events\AppEvent.h" />
     <ClInclude Include="src\Engine\Events\Event.h" />
     <ClInclude Include="src\Engine\Events\KeyEvent.h" />
     <ClInclude Include="src\Engine\Events\MouseEvent.h" />
     <ClInclude Include="src\Engine\ImGUI\ImGUILayer.h" />
+    <ClInclude Include="src\Engine\Window\Render\RenderApi.h" />
+    <ClInclude Include="src\Engine\Window\Platforms\OpenGL\OpenGLApiFactory.h" />
+    <ClInclude Include="src\Engine\Window\Platforms\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\GoblinEngine.h" />
-    <ClInclude Include="src\Platforms\OpenGL\GLFWInput.h" />
-    <ClInclude Include="src\Platforms\OpenGL\ImGUIOpenGLRenderer.h" />
-    <ClInclude Include="src\Platforms\Platform.h" />
-    <ClInclude Include="src\Platforms\Windows\WindowsPlatform.h" />
-    <ClInclude Include="src\Platforms\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\Engine\Window\Platforms\GLFW\GLFWInput.h" />
+    <ClInclude Include="src\Engine\Window\Platforms\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Engine\Window\Platforms\OpenGL\OpenGLVertexBuffer.h" />
+    <ClInclude Include="src\Engine\Window\Platforms\Windows\WindowsWindow.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
@@ -570,16 +574,20 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Debug\RenderTriangleLayer.cpp" />
     <ClCompile Include="src\Engine\Core\GameApplication.cpp" />
-    <ClCompile Include="src\Engine\Core\Input.cpp" />
     <ClCompile Include="src\Engine\Core\LayerList.cpp" />
     <ClCompile Include="src\Engine\Core\Log.cpp" />
-    <ClCompile Include="src\Engine\Core\Window.cpp" />
+    <ClCompile Include="src\Engine\ImGUI\ImGUIBuild.cpp" />
     <ClCompile Include="src\Engine\ImGUI\ImGUILayer.cpp" />
-    <ClCompile Include="src\Platforms\OpenGL\GLFWInput.cpp" />
-    <ClCompile Include="src\Platforms\OpenGL\ImGUIOpenGLRenderer.cpp" />
-    <ClCompile Include="src\Platforms\Windows\WindowsPlatform.cpp" />
-    <ClCompile Include="src\Platforms\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\Engine\Window\Platforms\GLFW\GLFWInput.cpp" />
+    <ClCompile Include="src\Engine\Window\Platforms\OpenGL\OpenGLApiFactory.cpp" />
+    <ClCompile Include="src\Engine\Window\Platforms\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Engine\Window\Platforms\OpenGL\OpenGLIndexBuffer.cpp" />
+    <ClCompile Include="src\Engine\Window\Platforms\OpenGL\OpenGLIndexBuffer.h" />
+    <ClCompile Include="src\Engine\Window\Platforms\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Engine\Window\Platforms\OpenGL\OpenGLVertexBuffer.cpp" />
+    <ClCompile Include="src\Engine\Window\Platforms\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

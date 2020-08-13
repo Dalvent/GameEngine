@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-typedef int KeyCode;
-
 namespace GoblinEngine
 {
 	class KeyEvent : public Event

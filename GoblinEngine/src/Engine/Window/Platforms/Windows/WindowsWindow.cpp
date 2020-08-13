@@ -5,45 +5,19 @@
 #include "Engine/Events/KeyEvent.h"
 #include "Engine/Events/MouseEvent.h"
 
-#include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glad/glad.h>
 
 namespace GoblinEngine
 {
-	WindowsWindow::WindowsWindow(const WindowProps& props)
+	WindowsWindow::WindowsWindow(const WindowProps& props, RenderApiFactory* renderApi)
+		: Window(renderApi)
 	{
 		Init(props);
 	}
 	
-	WindowsWindow::~WindowsWindow()
-	{
-		Shutdow();
-	}
-	
-	void WindowsWindow::OnUpdate()
-	{
-		glfwPollEvents();
-		glfwSwapBuffers(_glfwWindow);
-	}
-	
-	void WindowsWindow::SetVSync(bool enabled)
-	{
-		if (enabled)
-		{
-			glfwSwapInterval(1);
-		}
-		else
-		{
-			glfwSwapInterval(0);
-		}
-
-		_data.vSync = enabled;
-	}
-
-
 	void WindowsWindow::Init(const WindowProps& windowProps)
 	{
-		GLFW_KEY_0;
 		_data.title = windowProps.title;
 		_data.width = windowProps.width;
 		_data.height = windowProps.height;
@@ -63,9 +37,10 @@ namespace GoblinEngine
 		}
 
 		_glfwWindow = (glfwCreateWindow((int)_data.width, (int)_data.height, _data.title.c_str(), nullptr, nullptr));
-		glfwMakeContextCurrent(_glfwWindow);
-		
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)
+		u_context.reset(GE_REDNER_API_FACTORY.CreateGraphicsContext(*this));
+		u_context->Init();
+
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		GE_CORE_ASSERT("Failed to initialize GLAD!", status);
 
 		glfwSetWindowUserPointer(_glfwWindow, &_data);
@@ -154,8 +129,38 @@ namespace GoblinEngine
 			_data.eventCallback(event);
 		});
 	}
+
+	WindowsWindow::WindowsWindow(const WindowProps& props, RenderApiFactory* renderApi)
+	{
+	}
+
+	WindowsWindow::~WindowsWindow()
+	{
+		Shutdow();
+	}
+	
 	void WindowsWindow::Shutdow()
 	{
 		glfwPollEvents();
+	}
+
+	void WindowsWindow::OnUpdate()
+	{
+		glfwPollEvents();
+		u_context->SwapBuffer();
+	}
+	
+	void WindowsWindow::SetVSync(bool enabled)
+	{
+		if (enabled)
+		{
+			glfwSwapInterval(1);
+		}
+		else
+		{
+			glfwSwapInterval(0);
+		}
+
+		_data.vSync = enabled;
 	}
 }

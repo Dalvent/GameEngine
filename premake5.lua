@@ -23,7 +23,7 @@ include "GoblinEngine/vendor/ImGUI"
 
 project "GoblinEngine"
     location "GoblinEngine"
-    kind "SharedLib"
+    kind "StaticLib"
 	language "C++"
 	cppdialect "C++17"
 	staticruntime "on"
@@ -42,12 +42,6 @@ project "GoblinEngine"
 		"%{prj.name}/vendor/glm/glm/**.inl",
     }
 
-    defines
-    {
-        "GE_PLATFORM_WINDOWS",
-        "GE_BUILD_DLL",
-        "GLFW_INCLUDE_NONE"
-    }
 
     includedirs
     {
@@ -70,6 +64,13 @@ project "GoblinEngine"
     filter "system:windows"
         systemversion "latest"
 
+        defines
+        {
+            "GE_PLATFORM_WINDOWS",
+            "GE_BUILD_DLL",
+            "GLFW_INCLUDE_NONE"
+        }
+
         postbuildcommands
         {
             ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
@@ -78,17 +79,17 @@ project "GoblinEngine"
     filter "configurations:Debug"
         defines "GE_DEBUG"
         buildoptions "/MDd"
-        symbols "On"
+        optimze "on"
     
     filter "configurations:Relese"
         defines "GE_RELEASE"
         buildoptions "/MD"
-        symbols "On" 
+        optimze "on" 
     
     filter "configurations:Dis"
         defines "GE_DIST"
         buildoptions "/MD"
-        symbols "On"
+        optimze "on"
 
 project "Sandbox"
     location "Sandbox"
@@ -124,8 +125,7 @@ project "Sandbox"
     }
     
     filter "system:windows"
-        cppdialect "C++17"
-        staticruntime "On"
+        staticruntime "on"
         systemversion "latest"
     
     
@@ -138,14 +138,14 @@ project "Sandbox"
     filter "configurations:Debug"
         defines "GE_DEBUG"
         buildoptions "/MDd"
-        symbols "On"
+        symbols "on"
     
     filter "configurations:Relese"
         defines "GE_RELEASE"
         buildoptions "/MD"
-        symbols "On" 
+        optimze "on" 
     
     filter "configurations:Dis"
         defines "GE_DIST"
         buildoptions "/MD"
-        symbols "On"
+        optimze "on"

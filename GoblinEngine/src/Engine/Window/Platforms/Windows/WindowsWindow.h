@@ -1,15 +1,16 @@
 #pragma once
-#include "Engine/Core/Window.h" 
-#include "Platforms/OpenGL/GLFWInput.h"
 
-struct GLFWwindow;
+#include "Engine/Window/Window.h"
+#include "Engine/Window/Platforms/GLFW/GLFWInput.h"
+
+class GLFWwindow;
 
 namespace GoblinEngine
 {
 	class WindowsWindow : public Window
 	{
 	public:
-		WindowsWindow(const WindowProps& props);
+		WindowsWindow(const WindowProps& props, RenderApiFactory* renderApi);
 		virtual ~WindowsWindow();
 
 		unsigned int GetWidth() const override { return _data.width; }
@@ -19,23 +20,26 @@ namespace GoblinEngine
 		bool IsVSync() const override { return _data.vSync; }
 
 		void SetVSync(bool enabled) override;
-		void SetEventCallback(const EventCallbackFunc& callback) override { _data.eventCallback = callback; }
+		void SetEventCallback(const EventCallbackFunc& callback) override 
+		{
+			_data.eventCallback = callback;
+		}
+
 		void OnUpdate() override;
+	private:
+		void Init(const WindowProps& props);
+		void Shutdow();
 	private:
 		struct WindowData
 		{
 			std::string title;
 			unsigned int width;
 			unsigned int height;
-			bool vSync;
 			EventCallbackFunc eventCallback;
-		}; 
-
+			bool vSync;
+		};
 		WindowData _data;
-		GLFWwindow* _glfwWindow;
 		std::unique_ptr<GLFWInput> u_input;
-
-		virtual void Init(const WindowProps& props);
-		virtual void Shutdow();
+		GLFWwindow* _glfwWindow;
 	};
 }

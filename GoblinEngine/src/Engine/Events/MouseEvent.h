@@ -2,9 +2,6 @@
 
 #include "Event.h"
 
-typedef int MouseKeyCode;
-
-
 namespace GoblinEngine
 {
 	class MouseMovedEvent : public Event
