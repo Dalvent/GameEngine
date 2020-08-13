@@ -10,7 +10,7 @@ namespace GoblinEngine
 	class WindowsWindow : public Window
 	{
 	public:
-		WindowsWindow(const WindowProps& props, RenderApiFactory* renderApi);
+		WindowsWindow(RenderApi* renderApi, const WindowProps& props);
 		virtual ~WindowsWindow();
 
 		unsigned int GetWidth() const override { return _data.width; }

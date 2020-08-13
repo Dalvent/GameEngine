@@ -1,9 +1,9 @@
 #pragma once
 
-class GoblinEngine::Window;
-
 namespace GoblinEngine
 {
+	class Window;
+
 	class IGraphicsContext
 	{
 	public:
@@ -25,7 +25,7 @@ namespace GoblinEngine
 		virtual void Unbind() = 0;
 	};
 
-	class RenderApiFactory
+	class RenderApi
 	{
 	public:
 		virtual IGraphicsContext* CreateGraphicsContext(Window& window) = 0;

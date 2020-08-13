@@ -5,11 +5,70 @@
 
 namespace GoblinEngine
 {
-	OpenGLShader::OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc)
+	OpenGLShader::OpenGLShader(const std::string& vertexPath, const std::string& fragmentPath)
+	{
+		std::cout << vertexPath << std::endl;
+		std::cout << fragmentPath << std::endl;
+
+		// 1. retrieve the vertex/fragment source code from filePath
+		std::string vertexCode;
+		std::string fragmentCode;
+		std::ifstream vShaderFile;
+		std::ifstream fShaderFile;
+		// ensure ifstream objects can throw exceptions:
+		vShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+		fShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+		try
+		{
+			// open files
+			vShaderFile.open(vertexPath);
+			fShaderFile.open(fragmentPath);
+			std::stringstream vShaderStream, fShaderStream;
+			// read file's buffer contents into streams
+			vShaderStream << vShaderFile.rdbuf();
+			fShaderStream << fShaderFile.rdbuf();
+			// close file handlers
+			vShaderFile.close();
+			fShaderFile.close();
+			// convert stream into string
+			vertexCode = vShaderStream.str();
+			fragmentCode = fShaderStream.str();
+		}
+		catch (std::ifstream::failure e)
+		{
+			std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
+		}
+
+		Init(vertexCode, fragmentCode);
+	}
+
+	OpenGLShader::~OpenGLShader()
+	{
+		glDeleteProgram(_id);
+	}
+
+	void OpenGLShader::Use()
+	{
+		glUseProgram(_id);
+	}
+	void OpenGLShader::StopUse()
+	{
+		glUseProgram(0);
+	}
+	void OpenGLShader::SetBool(const std::string& name, bool value)
+	{
+	}
+	void OpenGLShader::SetInt(const std::string& name, int value)
+	{
+	}
+	void OpenGLShader::SetFloat(const std::string& name, float value)
+	{
+	}
+	void OpenGLShader::Init(const std::string& vertexCode, const std::string& fragmentCode)
 	{
 		int vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
-		const GLchar* source = (const GLchar*)vertexSrc.c_str();
+		const GLchar* source = (const GLchar*)vertexCode.c_str();
 		glShaderSource(vertexShader, 1, &source, 0);
 		glCompileShader(vertexShader);
 
@@ -24,7 +83,7 @@ namespace GoblinEngine
 			glGetShaderInfoLog(vertexShader, maxLenght, &maxLenght, &infoLog[0]);
 
 			glDeleteShader(vertexShader);
-			
+
 			GE_CORE_ERROR("{0}", infoLog.data());
 			GE_CORE_ERROR("Vertex shader compilation failure!");
 			return;
@@ -32,7 +91,7 @@ namespace GoblinEngine
 
 		int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 
-		source = (const GLchar*)fragmentSrc.c_str();
+		source = (const GLchar*)fragmentCode.c_str();
 		glShaderSource(fragmentShader, 1, &source, 0);
 		glCompileShader(fragmentShader);
 
@@ -82,19 +141,5 @@ namespace GoblinEngine
 		}
 		glDetachShader(_id, vertexShader);
 		glDetachShader(_id, fragmentShader);
-	}
-
-	OpenGLShader::~OpenGLShader()
-	{
-		glDeleteProgram(_id);
-	}
-
-	void OpenGLShader::Use() const
-	{
-		glUseProgram(_id);
-	}
-	void OpenGLShader::StopUseAnyShader()
-	{
-		glUseProgram(0);
 	}
 }

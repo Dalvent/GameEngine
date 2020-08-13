@@ -16,6 +16,11 @@ namespace GoblinEngine
 		GE_WINDOW.SetEventCallback(GE_BIND_EVENT(GameApplication::OnEvent));
 	}
 
+	GameApplication& GameApplication::Get()
+	{
+		return *_instance;
+	}
+
 	void GameApplication::Init()
 	{
 		_instance = new GameApplication();

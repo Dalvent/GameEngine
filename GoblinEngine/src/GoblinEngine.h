@@ -5,8 +5,12 @@
 // For use by GoblinEngine application.
 #include "Engine/Core/GameApplication.h"
 
-// For visualisation.
-#include "Engine/Window/Window.h"
+#ifdef GE_PLATFORM_WINDOWS
+	#include "Engine/Window/Platforms/Windows/WindowsWindow.h"
+	#include "Engine/Window/Platforms/OpenGL/OpenGLApi.h"
+#else
+	#error No supported platform selected! 
+#endif
 
 // For layers.
 #include "Engine/Core/Layer.h"

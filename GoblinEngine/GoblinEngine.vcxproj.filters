@@ -16,14 +16,29 @@
     <Filter Include="src\Engine\ImGUI">
       <UniqueIdentifier>{7C1788A8-6810-A7FA-9142-8C7F7D9A8606}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Platforms">
-      <UniqueIdentifier>{B40E5C85-20CF-D7BB-E909-213955891C98}</UniqueIdentifier>
+    <Filter Include="src\Engine\Window">
+      <UniqueIdentifier>{B98500DA-259C-FE6F-6E13-8A91DA68CFF7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Platforms\OpenGL">
-      <UniqueIdentifier>{68A52600-5434-B0C9-FD52-C4C4E9C0C06F}</UniqueIdentifier>
+    <Filter Include="src\Engine\Window\Input">
+      <UniqueIdentifier>{78DC6F6F-E413-B806-ED1D-1C2A59D4DEFF}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Platforms\Windows">
-      <UniqueIdentifier>{EE2C175D-5A99-D257-238D-6AB58FB8F4BF}</UniqueIdentifier>
+    <Filter Include="src\Engine\Window\Platforms">
+      <UniqueIdentifier>{40889FF5-AC95-CDDB-357C-C9C6A1889992}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Engine\Window\Platforms\GLFW">
+      <UniqueIdentifier>{7F6B5927-6BBC-4469-9420-332B80D0D7D2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Engine\Window\Platforms\OpenGL">
+      <UniqueIdentifier>{7469A878-60A5-ABE2-C9B7-C3D9B51254FD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Engine\Window\Platforms\Windows">
+      <UniqueIdentifier>{7A72D1E5-E62B-3C90-6F8B-566ADB43F2FF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Engine\Window\Render">
+      <UniqueIdentifier>{089AC571-F4BE-14F2-1D0A-FA81098E1310}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Test">
+      <UniqueIdentifier>{BCFB25CF-A8C8-80DA-D1E1-6E82BD0DB668}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -66,6 +81,9 @@
     <ClInclude Include="src\Engine\Core\LayerList.h">
       <Filter>src\Engine\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Core\Log.h">
+      <Filter>src\Engine\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Engine\Events\AppEvent.h">
       <Filter>src\Engine\Events</Filter>
     </ClInclude>
@@ -81,8 +99,38 @@
     <ClInclude Include="src\Engine\ImGUI\ImGUILayer.h">
       <Filter>src\Engine\ImGUI</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Window\Input\Input.h">
+      <Filter>src\Engine\Window\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Window\Input\KeyCode.h">
+      <Filter>src\Engine\Window\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Window\Platforms\GLFW\GLFWInput.h">
+      <Filter>src\Engine\Window\Platforms\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Window\Platforms\OpenGL\OpenGLApi.h">
+      <Filter>src\Engine\Window\Platforms\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Window\Platforms\OpenGL\OpenGLShader.h">
+      <Filter>src\Engine\Window\Platforms\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Window\Platforms\Windows\WindowsWindow.h">
+      <Filter>src\Engine\Window\Platforms\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Window\Render\IShader.h">
+      <Filter>src\Engine\Window\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Window\Render\RenderApi.h">
+      <Filter>src\Engine\Window\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Window\Window.h">
+      <Filter>src\Engine\Window</Filter>
+    </ClInclude>
     <ClInclude Include="src\GoblinEngine.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Test\RenderTriangleLayer.h">
+      <Filter>src\Test</Filter>
     </ClInclude>
     <ClInclude Include="src\pch.h">
       <Filter>src</Filter>
@@ -1311,31 +1359,6 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Debug\RenderTriangleLayer.h" />
-    <ClInclude Include="src\Debug\GoblinEngineD.h" />
-    <ClInclude Include="src\Engine\Core\Log.h">
-      <Filter>src\Engine\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Window\Render\RenderApi.h" />
-    <ClInclude Include="src\Engine\Window\Window.h">
-      <Filter>src\Engine\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Window\Platforms\GLFW\GLFWInput.h">
-      <Filter>src\Platforms\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Window\Platforms\OpenGL\OpenGLApiFactory.h" />
-    <ClInclude Include="src\Engine\Window\Platforms\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\Engine\Window\Platforms\OpenGL\OpenGLShader.h" />
-    <ClInclude Include="src\Engine\Window\Platforms\OpenGL\OpenGLVertexBuffer.h" />
-    <ClInclude Include="src\Engine\Window\Platforms\Windows\WindowsWindow.h">
-      <Filter>src\Platforms\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Window\Input\Input.h">
-      <Filter>src\Engine\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Window\Input\KeyCode.h">
-      <Filter>src\Engine\Core</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Core\GameApplication.cpp">
@@ -1344,30 +1367,35 @@
     <ClCompile Include="src\Engine\Core\LayerList.cpp">
       <Filter>src\Engine\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Core\Log.cpp">
+      <Filter>src\Engine\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\Engine\ImGUI\ImGUIBuild.cpp">
       <Filter>src\Engine\ImGUI</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\ImGUI\ImGUILayer.cpp">
       <Filter>src\Engine\ImGUI</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Window\Platforms\GLFW\GLFWInput.cpp">
+      <Filter>src\Engine\Window\Platforms\GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Window\Platforms\OpenGL\OpenGLApi.cpp">
+      <Filter>src\Engine\Window\Platforms\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Window\Platforms\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Engine\Window\Platforms\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Window\Platforms\Windows\WindowsWindow.cpp">
+      <Filter>src\Engine\Window\Platforms\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Window\Window.cpp">
+      <Filter>src\Engine\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Test\RenderTriangleLayer.cpp">
+      <Filter>src\Test</Filter>
+    </ClCompile>
     <ClCompile Include="src\pch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Debug\RenderTriangleLayer.cpp" />
-    <ClCompile Include="src\Engine\Core\Log.cpp">
-      <Filter>src\Engine\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\Window\Platforms\GLFW\GLFWInput.cpp">
-      <Filter>src\Platforms\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\Window\Platforms\OpenGL\OpenGLContext.cpp" />
-    <ClCompile Include="src\Engine\Window\Platforms\OpenGL\OpenGLIndexBuffer.cpp" />
-    <ClCompile Include="src\Engine\Window\Platforms\OpenGL\OpenGLIndexBuffer.h" />
-    <ClCompile Include="src\Engine\Window\Platforms\OpenGL\OpenGLShader.cpp" />
-    <ClCompile Include="src\Engine\Window\Platforms\OpenGL\OpenGLVertexBuffer.cpp" />
-    <ClCompile Include="src\Engine\Window\Platforms\Windows\WindowsWindow.cpp">
-      <Filter>src\Platforms\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\Window\Platforms\OpenGL\OpenGLApiFactory.cpp" />
   </ItemGroup>
 </Project>

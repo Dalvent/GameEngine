@@ -1,7 +1,7 @@
 #include <iostream>
 #include <GoblinEngine.h>
 #include <glm/vec2.hpp>
-#include <Debug/GoblinEngineD.h>
+#include "Test/RenderTriangleLayer.h"
 
 class SuckLayer : public GoblinEngine::Layer
 {
@@ -35,5 +35,5 @@ void GoblinEngine::SetupAppSettings(GoblinEngine::GameApplication& app)
 {
 	app.SetGameMod(new SandBox());
 	app.AddLayer(new SuckLayer());
-	app.AddLayer(new GoblinEngine::Debug::RenderTriangleLayer());
+	app.AddLayer(new GoblinEngine::RenderTriangleLayer());
 }

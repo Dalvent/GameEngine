@@ -30,17 +30,11 @@ namespace GoblinEngine
 	class Window
 	{
 	public:
-		static Window& Get() { return *_instance; }
-		static void SetInstance(Window* instance)
-		{
-			_instance = instance;
-		}
-		static void DeleteInstance()
-		{
-			delete _instance;
-		}
+		static Window& Get();
+		static void SetInstance(Window* instance);
+		static void DeleteInstance();
 	public: 
-		Window(RenderApiFactory* factory) : u_rendFactory(factory)
+		Window(RenderApi* api) : u_renderApi(api)
 		{
 		}
 		virtual ~Window() {}
@@ -50,7 +44,7 @@ namespace GoblinEngine
 		virtual void* GetNativeWindow() const = 0;
 		virtual bool IsVSync() const = 0;
 		virtual Input& GetInput() const = 0;
-		RenderApiFactory& GetRenderApiFactory() const { return *u_rendFactory; }
+		RenderApi& GetRenderApiFactory() const { return *u_renderApi; }
 		
 		virtual void SetEventCallback(const EventCallbackFunc& callback) = 0;
 		virtual void SetVSync(bool enabled) = 0;
@@ -61,7 +55,7 @@ namespace GoblinEngine
 	private:
 		static Window* _instance;
 	private:
-		std::unique_ptr<RenderApiFactory> u_rendFactory;
+		std::unique_ptr<RenderApi> u_renderApi;
 	};
 
 }

@@ -10,7 +10,7 @@
 
 namespace GoblinEngine
 {
-	WindowsWindow::WindowsWindow(const WindowProps& props, RenderApiFactory* renderApi)
+	WindowsWindow::WindowsWindow(RenderApi* renderApi, const WindowProps& props)
 		: Window(renderApi)
 	{
 		Init(props);
@@ -37,7 +37,7 @@ namespace GoblinEngine
 		}
 
 		_glfwWindow = (glfwCreateWindow((int)_data.width, (int)_data.height, _data.title.c_str(), nullptr, nullptr));
-		u_context.reset(GE_REDNER_API_FACTORY.CreateGraphicsContext(*this));
+		u_context.reset(GetRenderApiFactory().CreateGraphicsContext(*this));
 		u_context->Init();
 
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
@@ -128,10 +128,6 @@ namespace GoblinEngine
 			auto event = MouseMovedEvent(xPos, yPos);
 			_data.eventCallback(event);
 		});
-	}
-
-	WindowsWindow::WindowsWindow(const WindowProps& props, RenderApiFactory* renderApi)
-	{
 	}
 
 	WindowsWindow::~WindowsWindow()
