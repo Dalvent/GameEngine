@@ -63,69 +63,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Engine\Core\Base.h">
-      <Filter>src\Engine\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Core\EnteryPoint.h">
-      <Filter>src\Engine\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Core\GameApplication.h">
-      <Filter>src\Engine\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Core\GameMode.h">
-      <Filter>src\Engine\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Core\Layer.h">
-      <Filter>src\Engine\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Core\LayerList.h">
-      <Filter>src\Engine\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Core\Log.h">
-      <Filter>src\Engine\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Events\AppEvent.h">
-      <Filter>src\Engine\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Events\Event.h">
-      <Filter>src\Engine\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Events\KeyEvent.h">
-      <Filter>src\Engine\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Events\MouseEvent.h">
-      <Filter>src\Engine\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\ImGUI\ImGUILayer.h">
-      <Filter>src\Engine\ImGUI</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Window\Input\Input.h">
-      <Filter>src\Engine\Window\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Window\Input\KeyCode.h">
-      <Filter>src\Engine\Window\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Window\Platforms\GLFW\GLFWInput.h">
-      <Filter>src\Engine\Window\Platforms\GLFW</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Window\Platforms\OpenGL\OpenGLApi.h">
-      <Filter>src\Engine\Window\Platforms\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Window\Platforms\OpenGL\OpenGLShader.h">
-      <Filter>src\Engine\Window\Platforms\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Window\Platforms\Windows\WindowsWindow.h">
-      <Filter>src\Engine\Window\Platforms\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Window\Render\IShader.h">
-      <Filter>src\Engine\Window\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Window\Render\RenderApi.h">
-      <Filter>src\Engine\Window\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\Window\Window.h">
-      <Filter>src\Engine\Window</Filter>
-    </ClInclude>
     <ClInclude Include="src\GoblinEngine.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -1359,43 +1296,119 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Core\Base.h">
+      <Filter>src\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Core\EnteryPoint.h">
+      <Filter>src\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Core\GameApplication.h">
+      <Filter>src\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Core\GameMode.h">
+      <Filter>src\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Core\Layer.h">
+      <Filter>src\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Core\LayerList.h">
+      <Filter>src\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Core\Log.h">
+      <Filter>src\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Events\AppEvent.h">
+      <Filter>src\Engine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Events\Event.h">
+      <Filter>src\Engine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Events\KeyEvent.h">
+      <Filter>src\Engine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Events\MouseEvent.h">
+      <Filter>src\Engine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\ImGUI\ImGUILayer.h">
+      <Filter>src\Engine\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Window\Input\Input.h">
+      <Filter>src\Engine\Window\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Window\Input\KeyCode.h">
+      <Filter>src\Engine\Window\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Window\Platforms\GLFW\GLFWInput.h">
+      <Filter>src\Engine\Window\Platforms\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLApi.h">
+      <Filter>src\Engine\Window\Platforms\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLShader.h">
+      <Filter>src\Engine\Window\Platforms\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\GoblinEngine\Window\Platforms\Windows\WindowsWindow.h">
+      <Filter>src\Engine\Window\Platforms\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Window\Render\Buffer.h" />
+    <ClInclude Include="src\GoblinEngine\Window\Render\IGraphicsContext.h" />
+    <ClInclude Include="src\GoblinEngine\Window\Render\IShader.h">
+      <Filter>src\Engine\Window\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Window\Render\IVertexArray.h" />
+    <ClInclude Include="src\GoblinEngine\Window\Render\RenderApi.h">
+      <Filter>src\Engine\Window\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Window\Window.h">
+      <Filter>src\Engine\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLBuffer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Engine\Core\GameApplication.cpp">
-      <Filter>src\Engine\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\Core\LayerList.cpp">
-      <Filter>src\Engine\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\Core\Log.cpp">
-      <Filter>src\Engine\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\ImGUI\ImGUIBuild.cpp">
-      <Filter>src\Engine\ImGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\ImGUI\ImGUILayer.cpp">
-      <Filter>src\Engine\ImGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\Window\Platforms\GLFW\GLFWInput.cpp">
-      <Filter>src\Engine\Window\Platforms\GLFW</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\Window\Platforms\OpenGL\OpenGLApi.cpp">
-      <Filter>src\Engine\Window\Platforms\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\Window\Platforms\OpenGL\OpenGLShader.cpp">
-      <Filter>src\Engine\Window\Platforms\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\Window\Platforms\Windows\WindowsWindow.cpp">
-      <Filter>src\Engine\Window\Platforms\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\Window\Window.cpp">
-      <Filter>src\Engine\Window</Filter>
-    </ClCompile>
     <ClCompile Include="src\Test\RenderTriangleLayer.cpp">
       <Filter>src\Test</Filter>
     </ClCompile>
     <ClCompile Include="src\pch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\GoblinEngine\Core\GameApplication.cpp">
+      <Filter>src\Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GoblinEngine\Core\LayerList.cpp">
+      <Filter>src\Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GoblinEngine\Core\Log.cpp">
+      <Filter>src\Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GoblinEngine\ImGUI\ImGUIBuild.cpp">
+      <Filter>src\Engine\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GoblinEngine\ImGUI\ImGUILayer.cpp">
+      <Filter>src\Engine\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GoblinEngine\Window\Platforms\GLFW\GLFWInput.cpp">
+      <Filter>src\Engine\Window\Platforms\GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLApi.cpp">
+      <Filter>src\Engine\Window\Platforms\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Engine\Window\Platforms\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GoblinEngine\Window\Platforms\Windows\WindowsWindow.cpp">
+      <Filter>src\Engine\Window\Platforms\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GoblinEngine\Window\Window.cpp">
+      <Filter>src\Engine\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLBuffer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Test\Shader\test.frag" />
+    <None Include="src\Test\Shader\test.vert" />
   </ItemGroup>
 </Project>

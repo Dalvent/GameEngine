@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Engine/Core/Layer.h"
-#include "Engine/Window/Platforms/OpenGL/OpenGLShader.h"
+#include "GoblinEngine/Core/Layer.h"
+#include "GoblinEngine/Window/Platforms/OpenGL/OpenGLShader.h"
 #include <memory>
 
 namespace GoblinEngine

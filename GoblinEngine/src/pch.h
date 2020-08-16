@@ -14,7 +14,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Engine/Core/Log.h"
+#include "GoblinEngine/Core/Log.h"
 
 #ifdef GE_PLATFORM_WINDOWS
 	#include <Windows.h>
