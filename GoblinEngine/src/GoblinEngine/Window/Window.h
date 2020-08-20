@@ -44,14 +44,14 @@ namespace GoblinEngine
 		virtual void* GetNativeWindow() const = 0;
 		virtual bool IsVSync() const = 0;
 		virtual Input& GetInput() const = 0;
-		RenderApi& GetRenderApiFactory() const { return *u_renderApi; }
+		RenderApi& GetRenderApi() const { return *u_renderApi; }
 		
 		virtual void SetEventCallback(const EventCallbackFunc& callback) = 0;
 		virtual void SetVSync(bool enabled) = 0;
 		
 		virtual void OnUpdate() = 0;
 	protected:
-		std::unique_ptr<IGraphicsContext> u_context;
+		std::unique_ptr<GraphicsContext> u_context;
 	private:
 		static Window* _instance;
 	private:
@@ -62,4 +62,4 @@ namespace GoblinEngine
 
 #define GE_WINDOW GoblinEngine::Window::Get()
 #define GE_INPUT GoblinEngine::Window::Get().GetInput()
-#define GE_RENDER_API_FACTORY GoblinEngine::Window::Get().GetRenderApiFactory()
+#define GE_RENDER_API GoblinEngine::Window::Get().GetRenderApi()

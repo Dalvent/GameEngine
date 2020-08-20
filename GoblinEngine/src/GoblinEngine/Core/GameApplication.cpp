@@ -3,9 +3,8 @@
 #include "GameApplication.h"
 #include "GoblinEngine/Window/Window.h"
 #include "GoblinEngine/ImGUI/ImGUILayer.h"
-
-#include <GLFW/glfw3.h>
-#include <glad/glad.h>
+#include "GoblinEngine/Window/Render/Renderer.h"
+#include "GoblinEngine/Window/Render/OrthogriphicCamera.h"
 
 namespace GoblinEngine
 {
@@ -50,14 +49,51 @@ namespace GoblinEngine
 	void GameApplication::Run()
 	{
 		u_gameMode->OnBegin();
-		glClearColor(0.65f, 0.17f, 0.35f, 1);
+		GE_RENDER_API.SetClearColor(glm::vec4(0.65f, 0.17f, 0.35f, 1));
 
 		auto imGuiLayer = new ImGUILayer();
 		this->AddLayer(imGuiLayer);
 
+		OrthogriphicCamera camera(-1.0f, 1.0f, -1.0f, 1.0f);
+		camera.SetPosition(glm::vec3(0, 0, 0));
+		GE_INFO("{0} {1} {2}", camera.GetPosition().x, camera.GetPosition().y, camera.GetPosition().z);
+
 		while (_running)
 		{
-			glClear(GL_COLOR_BUFFER_BIT);
+			Renderer::BeginScene(camera);
+
+			if (GE_INPUT.IsKeyPressed(GE_KEY_W))
+			{
+				camera.SetPosition(camera.GetPosition() + glm::vec3(0, -0.01f, 0));
+			}
+
+			if (GE_INPUT.IsKeyPressed(GE_KEY_A))
+			{
+				camera.SetPosition(camera.GetPosition() + glm::vec3(0.01f, 0, 0));
+			}
+
+			if (GE_INPUT.IsKeyPressed(GE_KEY_S))
+			{
+				camera.SetPosition(camera.GetPosition() + glm::vec3(0, 0.01f, 0));
+			}
+
+			if (GE_INPUT.IsKeyPressed(GE_KEY_D))
+			{
+				camera.SetPosition(camera.GetPosition() + glm::vec3(-0.01f, 0, 0));
+			}
+
+			if (GE_INPUT.IsKeyPressed(GE_KEY_Q))
+			{
+				camera.SetRotaion(camera.GetRotation() + 1.01f);
+			}
+
+			if (GE_INPUT.IsKeyPressed(GE_KEY_E))
+			{
+				camera.SetRotaion(camera.GetRotation() + -1.01f);
+			}
+
+
+			GE_RENDER_API.Clear();
 			for (auto layer = _layerList.Begin(); layer != _layerList.End(); ++layer)
 			{
 				(*layer)->OnUpdate();
@@ -70,8 +106,12 @@ namespace GoblinEngine
 			}
 			imGuiLayer->End();
 
+			Renderer::EndScene();
+
 			GE_WINDOW.OnUpdate();
 			u_gameMode->OnUpdate();
+			//camera.SetPosition(camera.GetPosition() + 0.001f);
+
 		}
 	}
 

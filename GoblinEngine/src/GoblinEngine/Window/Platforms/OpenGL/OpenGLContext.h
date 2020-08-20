@@ -1,11 +1,11 @@
 #pragma once
-#include "GoblinEngine/Window/Render/IGraphicsContext.h"
+#include "GoblinEngine/Window/Render/GraphicsContext.h"
 
 struct GLFWwindow;
 
 namespace GoblinEngine
 {
-	class OpenGLContext : public IGraphicsContext
+	class OpenGLContext : public GraphicsContext
 	{
 	public:
 		OpenGLContext(GLFWwindow* window);

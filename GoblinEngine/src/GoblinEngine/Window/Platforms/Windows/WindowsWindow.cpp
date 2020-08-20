@@ -11,7 +11,7 @@
 namespace GoblinEngine
 {
 	WindowsWindow::WindowsWindow(RenderApi* renderApi, const WindowProps& props)
-		: Window(renderApi)
+		: u_input(new GLFWInput()), Window(renderApi)
 	{
 		Init(props);
 	}
@@ -37,7 +37,7 @@ namespace GoblinEngine
 		}
 
 		_glfwWindow = (glfwCreateWindow((int)_data.width, (int)_data.height, _data.title.c_str(), nullptr, nullptr));
-		u_context.reset(GetRenderApiFactory().CreateGraphicsContext(*this));
+		u_context.reset(GetRenderApi().CreateGraphicsContext(*this));
 		u_context->Init();
 
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);

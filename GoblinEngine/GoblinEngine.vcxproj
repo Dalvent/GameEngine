@@ -163,14 +163,15 @@
     <ClInclude Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\GoblinEngine\Window\Platforms\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\GoblinEngine\Window\Render\Renderer.h" />
     <ClInclude Include="src\GoblinEngine\Window\Render\Buffer.h" />
-    <ClInclude Include="src\GoblinEngine\Window\Render\IGraphicsContext.h" />
-    <ClInclude Include="src\GoblinEngine\Window\Render\IShader.h" />
-    <ClInclude Include="src\GoblinEngine\Window\Render\IVertexArray.h" />
+    <ClInclude Include="src\GoblinEngine\Window\Render\GraphicsContext.h" />
+    <ClInclude Include="src\GoblinEngine\Window\Render\OrthogriphicCamera.h" />
+    <ClInclude Include="src\GoblinEngine\Window\Render\Shader.h" />
+    <ClInclude Include="src\GoblinEngine\Window\Render\VertexArray.h" />
     <ClInclude Include="src\GoblinEngine\Window\Render\RenderApi.h" />
     <ClInclude Include="src\GoblinEngine\Window\Window.h" />
     <ClInclude Include="src\GoblinEngine.h" />
-    <ClInclude Include="src\Test\RenderTriangleLayer.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
@@ -594,8 +595,9 @@
     <ClCompile Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\GoblinEngine\Window\Platforms\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\GoblinEngine\Window\Render\Renderer.cpp" />
+    <ClCompile Include="src\GoblinEngine\Window\Render\OrthogriphicCamera.cpp" />
     <ClCompile Include="src\GoblinEngine\Window\Window.cpp" />
-    <ClCompile Include="src\Test\RenderTriangleLayer.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

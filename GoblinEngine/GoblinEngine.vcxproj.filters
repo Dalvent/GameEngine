@@ -66,9 +66,6 @@
     <ClInclude Include="src\GoblinEngine.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Test\RenderTriangleLayer.h">
-      <Filter>src\Test</Filter>
-    </ClInclude>
     <ClInclude Include="src\pch.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -1353,11 +1350,6 @@
       <Filter>src\Engine\Window\Platforms\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\GoblinEngine\Window\Render\Buffer.h" />
-    <ClInclude Include="src\GoblinEngine\Window\Render\IGraphicsContext.h" />
-    <ClInclude Include="src\GoblinEngine\Window\Render\IShader.h">
-      <Filter>src\Engine\Window\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GoblinEngine\Window\Render\IVertexArray.h" />
     <ClInclude Include="src\GoblinEngine\Window\Render\RenderApi.h">
       <Filter>src\Engine\Window\Render</Filter>
     </ClInclude>
@@ -1365,11 +1357,15 @@
       <Filter>src\Engine\Window</Filter>
     </ClInclude>
     <ClInclude Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\GoblinEngine\Window\Render\GraphicsContext.h" />
+    <ClInclude Include="src\GoblinEngine\Window\Render\Shader.h">
+      <Filter>src\Engine\Window\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GoblinEngine\Window\Render\VertexArray.h" />
+    <ClInclude Include="src\GoblinEngine\Window\Render\OrthogriphicCamera.h" />
+    <ClInclude Include="src\GoblinEngine\Window\Render\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Test\RenderTriangleLayer.cpp">
-      <Filter>src\Test</Filter>
-    </ClCompile>
     <ClCompile Include="src\pch.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -1406,6 +1402,8 @@
     <ClCompile Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\GoblinEngine\Window\Render\OrthogriphicCamera.cpp" />
+    <ClCompile Include="src\GoblinEngine\Window\Render\Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Test\Shader\test.frag" />

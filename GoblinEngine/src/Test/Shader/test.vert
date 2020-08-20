@@ -1,10 +1,17 @@
 #version 410 core
 			
 layout(location = 0) in vec3 a_Position;
-out vec3 v_Position;			
+layout(location = 1) in vec4 a_Color;
+
+uniform mat4 u_ViewProjectionMatrix;
+
+out vec3 v_Position;
+out vec4 v_Color;
 
 void main()
 {
+	gl_Position = u_ViewProjectionMatrix * vec4(a_Position, 1.0);
+	
 	v_Position = a_Position;
-	gl_Position = vec4(a_Position, 1.0);
+	v_Color = a_Color;
 }		

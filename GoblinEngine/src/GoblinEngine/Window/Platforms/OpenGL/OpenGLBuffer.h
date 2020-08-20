@@ -4,7 +4,7 @@
 
 namespace GoblinEngine
 {
-	class OpenGLVertexBuffer : public IVertexBuffer
+	class OpenGLVertexBuffer : public VertexBuffer
 	{
 	public:
 		OpenGLVertexBuffer(float* data, unsigned int count);
@@ -12,15 +12,11 @@ namespace GoblinEngine
 
 		void Bind() override;
 		void Unbind() override;
-
-		virtual const BufferLayout& GetLayout() const { return _layout; }
-		virtual void SetLayout(const BufferLayout& layout) { _layout = layout; }
 	private:
-		BufferLayout _layout;
 		unsigned int _id;
 	};
 
-	class OpenGLIndexBuffer : public IIndexBuffer
+	class OpenGLIndexBuffer : public IndexBuffer
 	{
 	public:
 		OpenGLIndexBuffer(int* indices, unsigned int count);
@@ -28,6 +24,8 @@ namespace GoblinEngine
 
 		void Bind() override;
 		void Unbind() override;
+
+		virtual unsigned int GetCount() const { return _count; }
 	private:
 		unsigned int _id;
 		unsigned int _count;

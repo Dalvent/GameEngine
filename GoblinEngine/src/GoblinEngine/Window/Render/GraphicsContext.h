@@ -1,7 +1,7 @@
 #pragma once
 namespace GoblinEngine
 {
-	class IGraphicsContext
+	class GraphicsContext
 	{
 	public:
 		virtual void Init() = 0;

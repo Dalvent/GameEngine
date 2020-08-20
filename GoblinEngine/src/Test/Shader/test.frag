@@ -1,10 +1,12 @@
 #version 410 core
 
 in vec3 v_Position;
+in vec4 v_Color;
 
+out vec3 position;
 out vec4 color;
 
 void main()
 {
-	color = vec4(v_Position + 0.75, 1.0);
+	color = v_Color + 0.25;
 }

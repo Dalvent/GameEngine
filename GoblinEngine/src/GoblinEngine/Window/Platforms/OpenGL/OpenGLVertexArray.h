@@ -1,11 +1,12 @@
 #pragma once
 
-#include "GoblinEngine/Window/Render/IVertexArray.h"
+#include "GoblinEngine/Window/Render/VertexArray.h"
 #include <vector>
+
 
 namespace GoblinEngine
 {
-	class OpenGLVertexArray : public IVertexArray
+	class OpenGLVertexArray : public VertexArray
 	{
 	public:
 		OpenGLVertexArray();
@@ -14,12 +15,13 @@ namespace GoblinEngine
 		void Bind() override;
 		void Unbind() override;
 
-		void AddVertexBuffer(const std::shared_ptr<IVertexBuffer>& vertexBuffer) override;
-		virtual void SetIndexBuffer(const std::shared_ptr<IIndexBuffer>& vartexBuffer) override;
-		virtual void SetLayout(const BufferLayout& layout) override;
+		IndexBuffer& GetIndexBuffer() override { return *_indexBuffer; }
+
+		void AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer) override;
+		virtual void SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer) override;
 	private:
-		std::vector<std::shared_ptr<IVertexBuffer>> _vertexBuffers;
-		std::shared_ptr<IIndexBuffer> _indexBuffer;
+		std::vector<std::shared_ptr<VertexBuffer>> _vertexBuffers;
+		std::shared_ptr<IndexBuffer> _indexBuffer;
 		unsigned int _id;
 	};
 }
