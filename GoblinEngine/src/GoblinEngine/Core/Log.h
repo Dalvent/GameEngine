@@ -19,14 +19,14 @@ namespace GoblinEngine
 }
 
 // Core log macros.
-#define GE_CORE_TRACE(...)  ::GoblinEngine::Log::GetCoreLogger()->trace(__VA_ARGS__);
-#define GE_CORE_INFO(...)   ::GoblinEngine::Log::GetCoreLogger()->info(__VA_ARGS__);
-#define GE_CORE_WARN(...)   ::GoblinEngine::Log::GetCoreLogger()->warn(__VA_ARGS__);
-#define GE_CORE_ERROR(...)  ::GoblinEngine::Log::GetCoreLogger()->error(__VA_ARGS__);
-#define GE_CORE_FATAL(...)  ::GoblinEngine::Log::GetCoreLogger()->fatal(__VA_ARGS__);
+#define GE_LOG_CORE_TRACE(...)  ::GoblinEngine::Log::GetCoreLogger()->trace(__VA_ARGS__)
+#define GE_LOG_CORE_INFO(...)   ::GoblinEngine::Log::GetCoreLogger()->info(__VA_ARGS__)
+#define GE_LOG_CORE_WARN(...)   ::GoblinEngine::Log::GetCoreLogger()->warn(__VA_ARGS__)
+#define GE_LOG_CORE_ERROR(...)  ::GoblinEngine::Log::GetCoreLogger()->error(__VA_ARGS__)
+#define GE_LOG_CORE_FATAL(...)  ::GoblinEngine::Log::GetCoreLogger()->fatal(__VA_ARGS__)
 // Client log macros.
-#define GE_TRACE(...)		::GoblinEngine::Log::GetClientLogger()->trace(__VA_ARGS__);
-#define GE_INFO(...)		::GoblinEngine::Log::GetClientLogger()->info(__VA_ARGS__);
-#define GE_WARN(...)		::GoblinEngine::Log::GetClientLogger()->warn(__VA_ARGS__);
-#define GE_ERROR(...)		::GoblinEngine::Log::GetClientLogger()->error(__VA_ARGS__);
-#define GE_FATAL(...)		::GoblinEngine::Log::GetClientLogger()->fatal(__VA_ARGS__);
+#define GE_LOG_TRACE(...)		::GoblinEngine::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define GE_LOG_INFO(...)		::GoblinEngine::Log::GetClientLogger()->info(__VA_ARGS__)
+#define GE_LOG_WARN(...)		::GoblinEngine::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define GE_LOG_ERROR(...)		::GoblinEngine::Log::GetClientLogger()->error(__VA_ARGS__)
+#define GE_LOG_FATAL(...)		::GoblinEngine::Log::GetClientLogger()->fatal(__VA_ARGS__)

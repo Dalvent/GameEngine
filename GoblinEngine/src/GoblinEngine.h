@@ -16,6 +16,10 @@
 #include "GoblinEngine/Core/Layer.h"
 #include "GoblinEngine/ImGUI/ImGUILayer.h"
 
+#include "GoblinEngine/Window/Render/RenderApi.h"
+#include "GoblinEngine/Window/Render/Renderer.h"
+#include "GoblinEngine/Window/Render/OrthogriphicCamera.h"
+
 // Log.
 #include "GoblinEngine/Core/Log.h"
 

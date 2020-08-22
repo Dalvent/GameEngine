@@ -1364,6 +1364,7 @@
     <ClInclude Include="src\GoblinEngine\Window\Render\VertexArray.h" />
     <ClInclude Include="src\GoblinEngine\Window\Render\OrthogriphicCamera.h" />
     <ClInclude Include="src\GoblinEngine\Window\Render\Renderer.h" />
+    <ClInclude Include="src\GoblinEngine\Core\Time.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\pch.cpp">

@@ -81,8 +81,8 @@ namespace GoblinEngine
 
 			glDeleteShader(vertexShader);
 
-			GE_CORE_ERROR("{0}", infoLog.data());
-			GE_CORE_ERROR("Vertex shader compilation failure!");
+			GE_LOG_CORE_ERROR("{0}", infoLog.data());
+			GE_LOG_CORE_ERROR("Vertex shader compilation failure!");
 			return;
 		}
 
@@ -104,8 +104,8 @@ namespace GoblinEngine
 			glDeleteShader(vertexShader);
 			glDeleteShader(fragmentShader);
 
-			GE_CORE_ERROR("{0}", infoLog.data());
-			GE_CORE_ERROR("Fragment shader compilation failure!");
+			GE_LOG_CORE_ERROR("{0}", infoLog.data());
+			GE_LOG_CORE_ERROR("Fragment shader compilation failure!");
 			return;
 		}
 
@@ -132,8 +132,8 @@ namespace GoblinEngine
 			glDeleteShader(vertexShader);
 			glDeleteShader(fragmentShader);
 
-			GE_CORE_ERROR("{0}", infoLog.data());
-			GE_CORE_ERROR("Shader link failure!");
+			GE_LOG_CORE_ERROR("{0}", infoLog.data());
+			GE_LOG_CORE_ERROR("Shader link failure!");
 			return;
 		}
 		glDetachShader(_id, vertexShader);

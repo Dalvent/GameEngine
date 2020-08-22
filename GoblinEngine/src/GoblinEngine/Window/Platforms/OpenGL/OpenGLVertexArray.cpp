@@ -22,7 +22,7 @@ namespace GoblinEngine
 		case ShaderDataType::Bool:     return GL_BOOL;
 		}
 
-		GE_CORE_ASSERT(false, "Unknown ShaderDataType!");
+		GE_LOG_CORE_ASSERT(false, "Unknown ShaderDataType!");
 		return 0;
 	}
 

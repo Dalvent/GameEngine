@@ -22,17 +22,17 @@ namespace GoblinEngine
 		_data.width = windowProps.width;
 		_data.height = windowProps.height;
 
-		GE_CORE_INFO("Creating window {0} ({1} {2})", 
+		GE_LOG_CORE_INFO("Creating window {0} ({1} {2})", 
 			_data.title, _data.width, _data.height);
 
 		if (GLFW_NOT_INITIALIZED)
 		{
 			int success = glfwInit();
-			GE_CORE_ASSERT(success, "Could not intialize GLFW!")
+			GE_LOG_CORE_ASSERT(success, "Could not intialize GLFW!");
 			
 			glfwSetErrorCallback([](int error, const char* description) 
 			{
-				GE_CORE_ERROR("GLFW ERROR ({0}): {1}", error, description)
+				GE_LOG_CORE_ERROR("GLFW ERROR ({0}): {1}", error, description);
 			});
 		}
 
@@ -41,7 +41,7 @@ namespace GoblinEngine
 		u_context->Init();
 
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		GE_CORE_ASSERT("Failed to initialize GLAD!", status);
+		GE_LOG_CORE_ASSERT("Failed to initialize GLAD!", status);
 
 		glfwSetWindowUserPointer(_glfwWindow, &_data);
 		SetVSync(true);
@@ -146,6 +146,11 @@ namespace GoblinEngine
 		u_context->SwapBuffer();
 	}
 	
+	double WindowsWindow::GetTime()
+	{
+		return glfwGetTime();
+	}
+
 	void WindowsWindow::SetVSync(bool enabled)
 	{
 		if (enabled)

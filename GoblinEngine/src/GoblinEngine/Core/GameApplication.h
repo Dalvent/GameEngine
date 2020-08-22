@@ -2,6 +2,7 @@
 
 #include "GoblinEngine/Core/GameMode.h"
 #include "GoblinEngine/Core/LayerList.h"
+#include "GoblinEngine/Core/Time.h"
 
 namespace GoblinEngine
 {
@@ -14,6 +15,7 @@ namespace GoblinEngine
 	public:
 		GameMode& GetGameMode() const { return *u_gameMode; }
 		void SetGameMod(GameMode* gameMode);
+		float GetDeltaTime() { return _frameTime.GetDeltaTime(); }
 		
 		void AddLayer(Layer* layer);
 		void RemoveLayer(Layer* layer);
@@ -26,6 +28,7 @@ namespace GoblinEngine
 		GameApplication();
 	private:
 		LayerList _layerList;
+		FrameTime _frameTime;
 		std::unique_ptr<GameMode> u_gameMode;
 		bool _running = true;
 	};
@@ -36,3 +39,4 @@ namespace GoblinEngine
 
 #define GE_GAME_APPLICATON GoblinEngine::GameApplication::Get()
 #define GE_GAMEMODE GoblinEngine::GameApplication::Get().GetGameMode()
+#define GE_DELTATIME GoblinEngine::GameApplication::Get().GetDeltaTime()

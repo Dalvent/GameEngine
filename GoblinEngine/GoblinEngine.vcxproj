@@ -149,6 +149,7 @@
     <ClInclude Include="src\GoblinEngine\Core\Layer.h" />
     <ClInclude Include="src\GoblinEngine\Core\LayerList.h" />
     <ClInclude Include="src\GoblinEngine\Core\Log.h" />
+    <ClInclude Include="src\GoblinEngine\Core\Time.h" />
     <ClInclude Include="src\GoblinEngine\Events\AppEvent.h" />
     <ClInclude Include="src\GoblinEngine\Events\Event.h" />
     <ClInclude Include="src\GoblinEngine\Events\KeyEvent.h" />

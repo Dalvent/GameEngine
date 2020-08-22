@@ -45,6 +45,7 @@ namespace GoblinEngine
 		virtual bool IsVSync() const = 0;
 		virtual Input& GetInput() const = 0;
 		RenderApi& GetRenderApi() const { return *u_renderApi; }
+		virtual double GetTime() = 0;
 		
 		virtual void SetEventCallback(const EventCallbackFunc& callback) = 0;
 		virtual void SetVSync(bool enabled) = 0;
@@ -62,4 +63,5 @@ namespace GoblinEngine
 
 #define GE_WINDOW GoblinEngine::Window::Get()
 #define GE_INPUT GoblinEngine::Window::Get().GetInput()
+#define GE_CURRENT_TIME GoblinEngine::Window::Get().GetTime()
 #define GE_RENDER_API GoblinEngine::Window::Get().GetRenderApi()

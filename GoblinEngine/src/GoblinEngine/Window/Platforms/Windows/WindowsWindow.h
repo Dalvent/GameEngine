@@ -18,6 +18,7 @@ namespace GoblinEngine
 		virtual void* GetNativeWindow() const { return _glfwWindow; }
 		virtual Input& GetInput() const { return *(u_input.get()); }
 		bool IsVSync() const override { return _data.vSync; }
+		double GetTime() override;
 
 		void SetVSync(bool enabled) override;
 		void SetEventCallback(const EventCallbackFunc& callback) override 

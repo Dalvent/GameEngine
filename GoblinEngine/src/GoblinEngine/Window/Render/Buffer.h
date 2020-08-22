@@ -35,7 +35,7 @@ namespace GoblinEngine
 			case ShaderDataType::Bool:	  return 1;
 		}
 
-		GE_CORE_ERROR("Unkown ShaderDataType!");
+		GE_LOG_CORE_ERROR("Unkown ShaderDataType!");
 		return 0;
 	}
 
@@ -70,7 +70,7 @@ namespace GoblinEngine
 				case ShaderDataType::Bool:	  return 1;
 			}
 
-			GE_CORE_ERROR("Unkown ShaderDataType!");
+			GE_LOG_CORE_ERROR("Unkown ShaderDataType!");
 			return 0;
 		}
 	};
