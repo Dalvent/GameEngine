@@ -20,26 +20,28 @@ namespace GoblinEngine
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
-	void OpenGLApi::DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
+	void OpenGLApi::DrawIndexed(const VertexArray& vertexArray)
 	{
-		glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffer().GetCount(), GL_UNSIGNED_INT, nullptr);
+		glDrawElements(GL_TRIANGLES, vertexArray.GetIndexBuffer().GetCount(), GL_UNSIGNED_INT, nullptr);
 	}
 
-	GraphicsContext* OpenGLApi::CreateGraphicsContext(Window& window)
+	Scope<GraphicsContext> OpenGLApi::CreateGraphicsContext(Window& window)
 	{
-		return new OpenGLContext(static_cast<GLFWwindow*>(window.GetNativeWindow()));
-	}
-	IndexBuffer* OpenGLApi::CreateIndexBuffer(int* indices, unsigned int count)
-	{
-		return new OpenGLIndexBuffer(indices, count);
+		return Scope<GraphicsContext>(new OpenGLContext(static_cast<GLFWwindow*>(window.GetNativeWindow())));
 	}
 
-	VertexBuffer* OpenGLApi::CreateVertexBuffer(float* vertices, unsigned int size)
+	Ref<IndexBuffer> OpenGLApi::CreateIndexBuffer(int* indices, unsigned int count)
 	{
-		return new OpenGLVertexBuffer(vertices, size);
+		return Ref<IndexBuffer>(new OpenGLIndexBuffer(indices, count));
 	}
-	VertexArray* OpenGLApi::CreateVertexArray()
+
+	Ref<VertexBuffer> OpenGLApi::CreateVertexBuffer(float* vertices, unsigned int size)
 	{
-		return new OpenGLVertexArray();
+		return Ref<VertexBuffer>(new OpenGLVertexBuffer(vertices, size));
+	}
+
+	Ref<VertexArray> OpenGLApi::CreateVertexArray()
+	{
+		return Ref<VertexArray>(new OpenGLVertexArray());
 	}
 }

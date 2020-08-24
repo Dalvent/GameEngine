@@ -10,8 +10,8 @@ namespace GoblinEngine
 		OpenGLVertexBuffer(float* data, unsigned int count);
 		~OpenGLVertexBuffer();
 
-		void Bind() override;
-		void Unbind() override;
+		void Bind() const override;
+		void Unbind() const override;
 	private:
 		unsigned int _id;
 	};
@@ -22,8 +22,8 @@ namespace GoblinEngine
 		OpenGLIndexBuffer(int* indices, unsigned int count);
 		~OpenGLIndexBuffer();
 
-		void Bind() override;
-		void Unbind() override;
+		void Bind() const override;
+		void Unbind() const override;
 
 		virtual unsigned int GetCount() const { return _count; }
 	private:

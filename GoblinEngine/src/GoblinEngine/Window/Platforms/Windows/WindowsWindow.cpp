@@ -37,7 +37,7 @@ namespace GoblinEngine
 		}
 
 		_glfwWindow = (glfwCreateWindow((int)_data.width, (int)_data.height, _data.title.c_str(), nullptr, nullptr));
-		u_context.reset(GetRenderApi().CreateGraphicsContext(*this));
+		u_context = GetRenderApi().CreateGraphicsContext(*this);
 		u_context->Init();
 
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);

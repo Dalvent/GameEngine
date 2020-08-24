@@ -7,8 +7,9 @@ namespace GoblinEngine
 	{
 	public:
 		virtual void OnBegin() {}
-		virtual void OnUpdate() {}
 		virtual void OnEnd() {}
+		virtual void OnBeginRenderFrame() {}
+		virtual void OnEndRenderFrame() {}
 		virtual void OnEvent(Event& e) {}
 	};
 }

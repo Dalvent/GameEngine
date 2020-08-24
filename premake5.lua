@@ -116,12 +116,14 @@ project "Sandbox"
     {
         "GoblinEngine/src",
         "GoblinEngine/vendor/spdlog/include",
-        "%{IncludeDir.GLM}"
+        "%{IncludeDir.GLM}",
+        "%{IncludeDir.ImGUI}"
     }
 
     links
     {
-        "GoblinEngine"
+        "GoblinEngine",
+        "ImGui",
     }
     
     filter "system:windows"

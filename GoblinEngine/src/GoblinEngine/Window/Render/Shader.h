@@ -22,6 +22,9 @@ namespace GoblinEngine
 	public:
 		virtual void Bind() = 0;
 		virtual void Unbind() = 0;
-		virtual void SetUniformMat4(const std::string& name, glm::mat4 value) = 0;
+		virtual void SetUniformVec3(const std::string& name, const glm::vec3& value) = 0;
+		virtual void SetUniformVec4(const std::string& name, const glm::vec4& value) = 0;
+		virtual void SetUniformMat3(const std::string& name, const glm::mat3& value) = 0;
+		virtual void SetUniformMat4(const std::string& name, const glm::mat4& value) = 0;
 	};
 }

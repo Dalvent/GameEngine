@@ -11,11 +11,11 @@ namespace GoblinEngine
     public:
         void SetClearColor(const glm::vec4& color) override;
         void Clear() override;
-        void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray) override;
+        void DrawIndexed(const VertexArray& vertexArray) override;
 
-        GraphicsContext* CreateGraphicsContext(Window& window) override;
-        IndexBuffer* CreateIndexBuffer(int* indices, unsigned int count) override;
-        VertexBuffer* CreateVertexBuffer(float* vertices, unsigned int size) override;
-        VertexArray* CreateVertexArray() override;
+        Scope<GraphicsContext> CreateGraphicsContext(Window& window) override;
+        Ref<IndexBuffer> CreateIndexBuffer(int* indices, unsigned int count) override;
+        Ref<VertexBuffer> CreateVertexBuffer(float* vertices, unsigned int size) override;
+        Ref<VertexArray> CreateVertexArray() override;
     };
 }

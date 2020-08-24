@@ -56,7 +56,7 @@ namespace GoblinEngine
 		_frameTime = FrameTime(GE_WINDOW.GetTime());
 		while (_running)
 		{
-			u_gameMode->OnUpdate();
+			u_gameMode->OnBeginRenderFrame();
 
 			for (auto layer = _layerList.Begin(); layer != _layerList.End(); ++layer)
 			{
@@ -72,6 +72,7 @@ namespace GoblinEngine
 
 			GE_WINDOW.OnUpdate();
 
+			u_gameMode->OnEndRenderFrame();
 			_frameTime.NextFrame(GE_WINDOW.GetTime());
 		}
 	}

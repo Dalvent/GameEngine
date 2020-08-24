@@ -12,7 +12,11 @@ namespace GoblinEngine
 
 		void Bind() override;
 		void Unbind() override;
-		void SetUniformMat4(const std::string& name, glm::mat4 value) override;
+
+		void SetUniformVec3(const std::string& name, const glm::vec3& value) override;
+		void SetUniformVec4(const std::string& name, const glm::vec4& value) override;
+		void SetUniformMat3(const std::string& name, const glm::mat3& value) override;
+		void SetUniformMat4(const std::string& name, const glm::mat4& value) override;
 	private:
 		unsigned int _id;
 	private:

@@ -29,7 +29,7 @@ namespace GoblinEngine
 	private:
 		LayerList _layerList;
 		FrameTime _frameTime;
-		std::unique_ptr<GameMode> u_gameMode;
+		Scope<GameMode> u_gameMode;
 		bool _running = true;
 	};
 	

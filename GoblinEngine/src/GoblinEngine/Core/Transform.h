@@ -2,73 +2,52 @@
 
 #include <glm/glm.hpp>
 
-class Transform
+namespace GoblinEngine
 {
-public:
-	glm::mat4 GetMatrix() const { return _transformMatrix; }
-	Transform* GetOwner() const { return _owner; }
-	glm::vec3 GetLocalPosition() const { return _position; }
-	glm::vec3 GetLocalRotation() const { return _rotation; }
-	glm::vec3 GetLocalScale() const { return _scale; }
-	glm::vec3 GetWorldPosition() const
+	class Transform
 	{
-		glm::vec3 worldPosition = _position;
-		if (_owner != nullptr)
+	public:
+		Transform();
+
+		glm::mat4 GetWorldMatrix() const { return _worldMatrix; }
+		glm::mat4 GetLocalMatrix() const;
+
+		Ref<Transform> GetOwner() const { return _owner; }
+		glm::vec3 GetLocalPosition() const { return _position; }
+		glm::vec3 GetLocalRotation() const { return _rotation; }
+		glm::vec3 GetLocalScale() const { return _scale; }
+		glm::vec3 GetWorldPosition() const;
+		glm::vec3 GetWorldRotation() const;
+		glm::vec3 GetWorldScale() const;
+
+		void SetOwner(Ref<Transform>& owner)
 		{
-			worldPosition += _owner->GetWorldPosition();
+			_owner = owner;
+			RecalculateWorldMatrix();
 		}
-		return worldPosition;
-	}
-	glm::vec3 GetWorldRotation() const
-	{
-		glm::vec3 worldRotation = _rotation;
-		if (_owner != nullptr)
+		void SetPosition(glm::vec3 position)
 		{
-			worldRotation += _owner->GetWorldRotation();
+			_position = position;
+			RecalculateWorldMatrix();
 		}
-		return worldRotation;
-	}
-	glm::vec3 GetWorldScale() const
-	{
-		glm::vec3 worldScale = _scale;
-		if (_owner != nullptr)
+		void SetRotation(glm::vec3 rotation)
 		{
-			worldScale += _owner->GetWorldScale();
+			_rotation = rotation;
+			RecalculateWorldMatrix();
 		}
-		return worldScale;
-	}
+		void SetScale(glm::vec3 scale)
+		{
+			_scale = scale;
+			RecalculateWorldMatrix();
+		}
 
-	void SetOwner(Transform* owner)
-	{
-		_owner = owner;
-		RecalculateMatrix();
-	}
-	void SetPosition(glm::vec3 position)
-	{
-		_position = position;
-		RecalculateMatrix();
-	}
-	void SetRotation(glm::vec3 rotation)
-	{
-		_rotation = rotation;
-		RecalculateMatrix();
-	}
-	void SetScale(glm::vec3 scale)
-	{
-		_scale = scale;
-		RecalculateMatrix();
-	}
+	private:
+		void RecalculateWorldMatrix();
 
-private:
-	void RecalculateMatrix()
-	{
-		glm::mat4 trans = glm::mat4(1.0f);
-
-	}
-
-	glm::mat4 _transformMatrix;
-	glm::vec3 _position;
-	glm::vec3 _rotation;
-	glm::vec3 _scale;
-	Transform* _owner;
-};
+		glm::mat4 _worldMatrix;
+		glm::vec3 _position;
+		glm::vec3 _rotation;
+		glm::vec3 _scale;
+		Ref<Transform> _owner;
+	};
+}

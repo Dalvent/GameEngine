@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>GE_PLATFORM_WINDOWS;GE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\GoblinEngine\src;..\GoblinEngine\vendor\spdlog\include;..\GoblinEngine\vendor\GLM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\GoblinEngine\src;..\GoblinEngine\vendor\spdlog\include;..\GoblinEngine\vendor\GLM;..\GoblinEngine\vendor\ImGUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -96,7 +96,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>GE_PLATFORM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\GoblinEngine\src;..\GoblinEngine\vendor\spdlog\include;..\GoblinEngine\vendor\GLM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\GoblinEngine\src;..\GoblinEngine\vendor\spdlog\include;..\GoblinEngine\vendor\GLM;..\GoblinEngine\vendor\ImGUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -110,7 +110,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>GE_PLATFORM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\GoblinEngine\src;..\GoblinEngine\vendor\spdlog\include;..\GoblinEngine\vendor\GLM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\GoblinEngine\src;..\GoblinEngine\vendor\spdlog\include;..\GoblinEngine\vendor\GLM;..\GoblinEngine\vendor\ImGUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -120,12 +120,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp" />
+    <ClInclude Include="src\ColorChooseLayer.h" />
+    <ClInclude Include="src\RenderCellLayer.h" />
+    <ClInclude Include="src\SandBox.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\ColorChooseLayer.cpp" />
+    <ClCompile Include="src\RenderCellLayer.cpp" />
+    <ClCompile Include="src\SandBox.cpp" />
+    <ClCompile Include="src\SetupAppSettings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoblinEngine\GoblinEngine.vcxproj">
       <Project>{F6AA5A13-E20D-EAB7-8B93-226E77D5B53A}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\GoblinEngine\vendor\ImGUI\ImGui.vcxproj">
+      <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Shader\test.frag" />
+    <None Include="src\Shader\test.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

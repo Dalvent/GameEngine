@@ -1,3 +1,4 @@
+#pragma once
 #include "GoblinEngine/Window/Window.h"
 
 extern void GoblinEngine::SetupAppSettings(GoblinEngine::GameApplication& app);

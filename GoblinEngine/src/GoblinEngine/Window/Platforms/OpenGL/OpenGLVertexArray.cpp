@@ -36,36 +36,38 @@ namespace GoblinEngine
 		glDeleteVertexArrays(1, &_id);
 	}
 
-	void OpenGLVertexArray::Bind()
+	void OpenGLVertexArray::Bind() const
 	{
 		glBindVertexArray(_id);
 	}
 
-	void OpenGLVertexArray::Unbind()
+	void OpenGLVertexArray::Unbind() const
 	{
 		glBindVertexArray(0);
 	}
 
-	void OpenGLVertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer)
+	void OpenGLVertexArray::AddVertexBuffer(const Ref<VertexBuffer>& vertexBuffer)
 	{
+		_vertexBuffers.push_back(vertexBuffer);
 		glBindVertexArray(_id);
 		vertexBuffer->Bind();
+
 		unsigned int index = 0;
 
-		BufferElementsLayout layout = vertexBuffer->GetLayout();
+		auto layout = vertexBuffer->GetLayout();
 
-		for (const auto& element : layout.GetElemnets())
+		for (const auto& element : layout->GetElemnets())
 		{
 			glEnableVertexAttribArray(index);
 			glVertexAttribPointer(index, element.GetComponentCount(),
 				ShaderDataTypeToOpenGLBaseType(element.type),
 				element.normalized ? GL_TRUE : GL_FALSE,
-				layout.GetStride(), (void*)element.offset);
+				layout->GetStride(), (void*)element.offset);
 			index++;
 		}
 	}
 
-	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer)
+	void OpenGLVertexArray::SetIndexBuffer(const Ref<IndexBuffer>& indexBuffer)
 	{
 		this->Bind();
 		indexBuffer->Bind();

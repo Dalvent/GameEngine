@@ -40,7 +40,7 @@ namespace GoblinEngine
 			bool vSync;
 		};
 		WindowData _data;
-		std::unique_ptr<GLFWInput> u_input;
+		Scope<GLFWInput> u_input;
 		GLFWwindow* _glfwWindow;
 	};
 }

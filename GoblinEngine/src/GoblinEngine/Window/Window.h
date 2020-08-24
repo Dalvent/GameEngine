@@ -19,7 +19,7 @@ namespace GoblinEngine
 
 		WindowProps(const std::string& title = "Goblin Engine",
 			unsigned int width = 1280,
-			unsigned int height = 720) 
+			unsigned int height = 1280)
 			: title(title), width(width), height(height)
 		{
 		}
@@ -52,11 +52,11 @@ namespace GoblinEngine
 		
 		virtual void OnUpdate() = 0;
 	protected:
-		std::unique_ptr<GraphicsContext> u_context;
+		Scope<GraphicsContext> u_context;
 	private:
 		static Window* _instance;
 	private:
-		std::unique_ptr<RenderApi> u_renderApi;
+		Scope<RenderApi> u_renderApi;
 	};
 
 }

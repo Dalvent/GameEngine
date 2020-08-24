@@ -5,7 +5,7 @@
 
 namespace GoblinEngine
 {
-	Renderer::SceneData* Renderer::_sceneData = new Renderer::SceneData();
+	Renderer::SceneData* Renderer::_sceneData = new SceneData();
 
 	void Renderer::BeginScene(OrthogriphicCamera& camera)
 	{
@@ -16,12 +16,13 @@ namespace GoblinEngine
 	{
 	}
 
-	void Renderer::Submit(const std::shared_ptr<VertexArray> vertexArray, const std::shared_ptr<Shader> shader)
+	void Renderer::Submit(VertexArray& vertexArray, Shader& shader, const glm::mat4& transform)
 	{
-		shader->Bind();
-		shader->SetUniformMat4("u_ViewProjectionMatrix", _sceneData->ViewProjectionMatrix);
+		shader.Bind();
+		shader.SetUniformMat4("u_ViewProjectionMatrix", _sceneData->ViewProjectionMatrix);
+		shader.SetUniformMat4("u_Transform", transform);
 
-		vertexArray->Bind();
+		vertexArray.Bind();
 		GE_RENDER_API.DrawIndexed(vertexArray);
 	}
 }

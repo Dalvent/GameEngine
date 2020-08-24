@@ -1,7 +1,4 @@
 #pragma once
-
-#include "pch.h"
-
 // For use by GoblinEngine application.
 #include "GoblinEngine/Core/GameApplication.h"
 
@@ -20,8 +17,8 @@
 #include "GoblinEngine/Window/Render/Renderer.h"
 #include "GoblinEngine/Window/Render/OrthogriphicCamera.h"
 
+// Components
+#include "GoblinEngine/Core/Transform.h"
+
 // Log.
 #include "GoblinEngine/Core/Log.h"
-
-// Entry point.
-#include "GoblinEngine/Core/EnteryPoint.h"

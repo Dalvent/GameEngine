@@ -10,11 +10,11 @@ namespace GoblinEngine
 	public:
 		static void Init();
 
-		static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return _coreLogger; }
-		static std::shared_ptr<spdlog::logger>& GetClientLogger() { return _clientogger; }
+		static Ref<spdlog::logger> GetCoreLogger() { return _coreLogger; }
+		static Ref<spdlog::logger> GetClientLogger() { return _clientogger; }
 	private:
-		static std::shared_ptr<spdlog::logger> _coreLogger;
-		static std::shared_ptr<spdlog::logger> _clientogger;
+		static Ref<spdlog::logger> _coreLogger;
+		static Ref<spdlog::logger> _clientogger;
 	};
 }
 

@@ -142,6 +142,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\GoblinEngine.h" />
     <ClInclude Include="src\GoblinEngine\Core\Base.h" />
     <ClInclude Include="src\GoblinEngine\Core\EnteryPoint.h" />
     <ClInclude Include="src\GoblinEngine\Core\GameApplication.h" />
@@ -150,6 +151,7 @@
     <ClInclude Include="src\GoblinEngine\Core\LayerList.h" />
     <ClInclude Include="src\GoblinEngine\Core\Log.h" />
     <ClInclude Include="src\GoblinEngine\Core\Time.h" />
+    <ClInclude Include="src\GoblinEngine\Core\Transform.h" />
     <ClInclude Include="src\GoblinEngine\Events\AppEvent.h" />
     <ClInclude Include="src\GoblinEngine\Events\Event.h" />
     <ClInclude Include="src\GoblinEngine\Events\KeyEvent.h" />
@@ -159,20 +161,19 @@
     <ClInclude Include="src\GoblinEngine\Window\Input\KeyCode.h" />
     <ClInclude Include="src\GoblinEngine\Window\Platforms\GLFW\GLFWInput.h" />
     <ClInclude Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLApi.h" />
+    <ClInclude Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\GoblinEngine\Window\Platforms\Windows\WindowsWindow.h" />
-    <ClInclude Include="src\GoblinEngine\Window\Render\Renderer.h" />
     <ClInclude Include="src\GoblinEngine\Window\Render\Buffer.h" />
     <ClInclude Include="src\GoblinEngine\Window\Render\GraphicsContext.h" />
     <ClInclude Include="src\GoblinEngine\Window\Render\OrthogriphicCamera.h" />
+    <ClInclude Include="src\GoblinEngine\Window\Render\RenderApi.h" />
+    <ClInclude Include="src\GoblinEngine\Window\Render\Renderer.h" />
     <ClInclude Include="src\GoblinEngine\Window\Render\Shader.h" />
     <ClInclude Include="src\GoblinEngine\Window\Render\VertexArray.h" />
-    <ClInclude Include="src\GoblinEngine\Window\Render\RenderApi.h" />
     <ClInclude Include="src\GoblinEngine\Window\Window.h" />
-    <ClInclude Include="src\GoblinEngine.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
@@ -587,6 +588,7 @@
     <ClCompile Include="src\GoblinEngine\Core\GameApplication.cpp" />
     <ClCompile Include="src\GoblinEngine\Core\LayerList.cpp" />
     <ClCompile Include="src\GoblinEngine\Core\Log.cpp" />
+    <ClCompile Include="src\GoblinEngine\Core\Transform.cpp" />
     <ClCompile Include="src\GoblinEngine\ImGUI\ImGUIBuild.cpp" />
     <ClCompile Include="src\GoblinEngine\ImGUI\ImGUILayer.cpp" />
     <ClCompile Include="src\GoblinEngine\Window\Platforms\GLFW\GLFWInput.cpp" />
@@ -596,8 +598,8 @@
     <ClCompile Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\GoblinEngine\Window\Platforms\Windows\WindowsWindow.cpp" />
-    <ClCompile Include="src\GoblinEngine\Window\Render\Renderer.cpp" />
     <ClCompile Include="src\GoblinEngine\Window\Render\OrthogriphicCamera.cpp" />
+    <ClCompile Include="src\GoblinEngine\Window\Render\Renderer.cpp" />
     <ClCompile Include="src\GoblinEngine\Window\Window.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
@@ -613,10 +615,6 @@
     <ProjectReference Include="vendor\ImGUI\ImGui.vcxproj">
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\Test\Shader\test.frag" />
-    <None Include="src\Test\Shader\test.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

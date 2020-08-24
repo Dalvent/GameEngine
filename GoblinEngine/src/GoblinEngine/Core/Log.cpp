@@ -5,8 +5,8 @@
 
 namespace GoblinEngine
 {
-	std::shared_ptr<spdlog::logger> Log::_coreLogger;
-	std::shared_ptr<spdlog::logger> Log::_clientogger;
+	Ref<spdlog::logger> Log::_coreLogger;
+	Ref<spdlog::logger> Log::_clientogger;
 
 	void Log::Init()
 	{

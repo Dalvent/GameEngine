@@ -11,7 +11,7 @@ namespace GoblinEngine
 		static void BeginScene(OrthogriphicCamera& camera);
 		static void EndScene();
 
-		static void Submit(const std::shared_ptr<VertexArray> vertexArray, const std::shared_ptr<Shader> shader);
+		static void Submit(VertexArray& vertexArray, Shader& shader, const glm::mat4& transform);
 	private:
 		struct SceneData
 		{

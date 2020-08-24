@@ -14,12 +14,13 @@ namespace GoblinEngine
 	OpenGLVertexBuffer::~OpenGLVertexBuffer()
 	{
 		glDeleteBuffers(1, &_id);
+		std::cout << "vertexIsDead";
 	}
-	void OpenGLVertexBuffer::Bind()
+	void OpenGLVertexBuffer::Bind() const
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, _id);
 	}
-	void OpenGLVertexBuffer::Unbind()
+	void OpenGLVertexBuffer::Unbind() const
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
@@ -34,12 +35,13 @@ namespace GoblinEngine
 	OpenGLIndexBuffer::~OpenGLIndexBuffer()
 	{
 		glDeleteBuffers(1, &_id);
+		std::cout << "indexIsDead";
 	}
-	void OpenGLIndexBuffer::Bind()
+	void OpenGLIndexBuffer::Bind() const
 	{
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _id);
 	}
-	void OpenGLIndexBuffer::Unbind()
+	void OpenGLIndexBuffer::Unbind() const
 	{
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}

@@ -107,20 +107,20 @@ namespace GoblinEngine
 	class VertexBuffer
 	{
 	public:
-		virtual void Bind() = 0;
-		virtual void Unbind() = 0;
+		virtual void Bind() const = 0;
+		virtual void Unbind() const = 0;
 
-		virtual const BufferElementsLayout& GetLayout() const { return _layout; }
-		virtual void SetLayout(const BufferElementsLayout& layout) { _layout = layout; }
+		virtual const Ref<BufferElementsLayout> GetLayout() const { return _layout; }
+		virtual void SetLayout(const Ref<BufferElementsLayout>& layout) { _layout = layout; }
 	protected:
-		BufferElementsLayout _layout;
+		Ref<BufferElementsLayout> _layout;
 	};
 
 	class IndexBuffer
 	{
 	public:
-		virtual void Bind() = 0;
-		virtual void Unbind() = 0;
+		virtual void Bind() const = 0;
+		virtual void Unbind() const = 0;
 
 		virtual unsigned int GetCount() const = 0;
 	};

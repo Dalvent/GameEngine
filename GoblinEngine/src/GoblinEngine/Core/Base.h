@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #ifdef GE_PLATFORM_WINDOWS
 	#ifdef GE_USE_DLL
 		#ifdef GE_BUILD_DLL
@@ -25,3 +27,12 @@
 #define GE_BIT(x) (1 << x)
 
 #define GE_BIND_EVENT(eventFunction) std::bind(&eventFunction, this, std::placeholders::_1)
+
+namespace GoblinEngine
+{
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+}

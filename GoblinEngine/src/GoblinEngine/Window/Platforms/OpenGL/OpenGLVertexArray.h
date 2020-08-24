@@ -12,13 +12,13 @@ namespace GoblinEngine
 		OpenGLVertexArray();
 		~OpenGLVertexArray();
 
-		void Bind() override;
-		void Unbind() override;
+		void Bind() const override;
+		void Unbind() const override;
 
-		IndexBuffer& GetIndexBuffer() override { return *_indexBuffer; }
+		IndexBuffer& GetIndexBuffer() const override { return *_indexBuffer; }
 
-		void AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer) override;
-		virtual void SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer) override;
+		void AddVertexBuffer(const Ref<VertexBuffer>& vertexBuffer) override;
+		virtual void SetIndexBuffer(const Ref<IndexBuffer>& indexBuffer) override;
 	private:
 		std::vector<std::shared_ptr<VertexBuffer>> _vertexBuffers;
 		std::shared_ptr<IndexBuffer> _indexBuffer;
