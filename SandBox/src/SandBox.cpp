@@ -31,6 +31,16 @@ void SandBox::OnBeginRenderFrame()
 	{
 		s_camera->SetPosition(s_camera->GetPosition() + glm::vec3(1.0f, 0, 0) * GE_DELTATIME);
 	}
+
+	if (GE_INPUT.IsKeyPressed(GE_KEY_Q))
+	{
+		s_camera->SetRotaion(s_camera->GetRotation() + 100.0f * GE_DELTATIME);
+	}
+
+	if (GE_INPUT.IsKeyPressed(GE_KEY_E))
+	{
+		s_camera->SetRotaion(s_camera->GetRotation() + -100.0f * GE_DELTATIME);
+	}
 }
 
 void SandBox::OnEndRenderFrame()

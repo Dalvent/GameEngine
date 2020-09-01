@@ -2,6 +2,8 @@
 
 #include <memory>
 
+#define GE_ENABLE_ASSERTS
+
 #ifdef GE_PLATFORM_WINDOWS
 	#ifdef GE_USE_DLL
 		#ifdef GE_BUILD_DLL

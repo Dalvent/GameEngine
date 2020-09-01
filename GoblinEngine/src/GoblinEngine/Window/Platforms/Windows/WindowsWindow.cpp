@@ -14,6 +14,7 @@ namespace GoblinEngine
 		: u_input(new GLFWInput()), Window(renderApi)
 	{
 		Init(props);
+		renderApi->Init();
 	}
 	
 	void WindowsWindow::Init(const WindowProps& windowProps)

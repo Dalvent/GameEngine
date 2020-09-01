@@ -56,6 +56,11 @@ namespace GoblinEngine
 	{
 		glUseProgram(0);
 	}
+	void OpenGLShader::SetUniformInt(const std::string& name, const int value)
+	{
+		GLint location = glGetUniformLocation(_id, name.c_str());
+		glUniform1i(location, value);
+	}
 	void OpenGLShader::SetUniformVec3(const std::string& name, const glm::vec3& value)
 	{
 		GLint location = glGetUniformLocation(_id, name.c_str());
@@ -73,8 +78,37 @@ namespace GoblinEngine
 	}
 	void OpenGLShader::SetUniformMat4(const std::string& name, const glm::mat4& value)
 	{
-		GLint location = glGetUniformLocation(_id, name.c_str());
+		GLint location = glGetUniformLocation(_id, name.c_str());https://www.youtube.com/watch?v=238A-bHaB20
 		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(value));
+	}
+
+	std::string OpenGLShader::ReadFile(const std::string& filePath)
+	{
+		std::string code;
+		std::ifstream fileStream;
+		fileStream.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+		try
+		{
+			fileStream.open(filePath);
+			std::stringstream stringStream;
+			stringStream << fileStream.rdbuf();
+			fileStream.close();
+			code = stringStream.str();
+		}
+		catch (std::ifstream::failure e)
+		{
+			GE_LOG_ASSERT(true, "Can't open file!");
+		}
+		return code;
+	}
+
+	std::unordered_map<GLenum, std::string> OpenGLShader::PreProcess(const std::string& source)
+	{
+		return std::unordered_map<GLenum, std::string>();
+	}
+
+	void OpenGLShader::Compile(const std::string& vertexCode, const std::string& fragmentCode)
+	{
 	}
 
 	void OpenGLShader::Init(const std::string& vertexCode, const std::string& fragmentCode)

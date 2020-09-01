@@ -89,6 +89,7 @@ namespace GoblinEngine
 				element.offset = offset;
 				offset += element.size;
 				_stride += element.size;
+				std::cout << _stride << std::endl;
 			}
 		}
 

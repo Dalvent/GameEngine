@@ -17,9 +17,10 @@ public:
 private:
 	GoblinEngine::Transform* CreateTransforms();
 private:
-	std::shared_ptr<GoblinEngine::Shader> s_shader;
-	std::shared_ptr<GoblinEngine::VertexArray> s_vertexArray;
-	std::shared_ptr<GoblinEngine::OrthogriphicCamera> s_camera;
+	GoblinEngine::Ref<GoblinEngine::Shader> s_shader;
+	GoblinEngine::Ref<GoblinEngine::VertexArray> s_vertexArray;
+	GoblinEngine::Ref<GoblinEngine::OrthogriphicCamera> s_camera;
+	GoblinEngine::Ref<GoblinEngine::Texture> s_texture;
 	
 	GoblinEngine::Transform* _transforms;
 	ColorChooseLayer& _colorChoose;

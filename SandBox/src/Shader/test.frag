@@ -1,10 +1,13 @@
 #version 410 core
 
-uniform vec3 u_Color;
+in vec2 v_TexCoord;
 
-out vec3 color;
+out vec4 color;
+
+uniform sampler2D u_Texture;
+uniform vec3 u_Color;
 
 void main()
 {
-	color = u_Color;
+	color = texture(u_Texture, v_TexCoord);
 }

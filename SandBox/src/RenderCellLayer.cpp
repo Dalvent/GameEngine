@@ -1,25 +1,29 @@
 #include "RenderCellLayer.h"
 #include <GoblinEngine/Window/Platforms/OpenGL/OpenGLShader.h>
+#include <GoblinEngine/Window/Platforms/OpenGL/OpenGLTexture.h>
 
-#define MAX_TRANSFORMS 2
 using namespace GoblinEngine;
+
+#define MAX_TRANSFORMS 1
+
 void RenderCellLayer::OnAttach()
 {
 	_transforms = CreateTransforms();
 
 	float vertices[] = {
-		 1.0f,  1.0f, 0.0f,
-		 1.0f, -1.0f, 0.0f,
-		-1.0f, -1.0f, 0.0f,
-		-1.0f,  1.0f, 0.0f
+		 1.0f,  1.0f, 0.0f,    1.0f,  1.0f,
+		 1.0f, -1.0f, 0.0f,	   1.0f,  0.0f,
+		-1.0f, -1.0f, 0.0f,	   0.0f,  0.0f,
+		-1.0f,  1.0f, 0.0f,	   0.0f,  1.0f
 	};
-	auto vertexBuffer = GE_RENDER_API.CreateVertexBuffer(vertices, 12);
+	auto vertexBuffer = GE_RENDER_API.CreateVertexBuffer(vertices, sizeof(vertices) / sizeof(float));
 
 	vertexBuffer->SetLayout(Ref<BufferElementsLayout>(
 		Ref<BufferElementsLayout>
 			(new BufferElementsLayout(
 				std::initializer_list<BufferElement> {
-					{ "a_Position", GoblinEngine::ShaderDataType::Float3 }
+					{ "a_Position", ShaderDataType::Float3 },
+					{ "a_TexCoord", ShaderDataType::Float2 }
 				}
 			)
 		)
@@ -38,6 +42,10 @@ void RenderCellLayer::OnAttach()
 	s_shader.reset(new GoblinEngine::OpenGLShader(
 		"C:\\dev\\GoblinEngine\\SandBox\\src\\Shader\\test.vert",
 		"C:\\dev\\GoblinEngine\\SandBox\\src\\Shader\\test.frag"));
+	
+	s_texture = GE_RENDER_API.CreteTexture2D(Image("C:\\Users\\dencr\\Desktop\\0\\Pictures\\MyPict\\Other\\BananaMan.png"));
+	s_texture->Bind();
+	std::static_pointer_cast<OpenGLShader>(s_shader)->SetUniformInt("u_Texture", 0);
 }
 
 void RenderCellLayer::OnUpdate()
@@ -45,23 +53,6 @@ void RenderCellLayer::OnUpdate()
 	GoblinEngine::Renderer::BeginScene(*s_camera);
 	for (size_t i = 0; i < MAX_TRANSFORMS * MAX_TRANSFORMS; i++)
 	{
-		if (i % 4 == 0)
-		{
-			s_shader->SetUniformVec3("u_Color", _colorChoose.GetColor1());
-		}
-		else if (i % 4 == 1)
-		{
-			s_shader->SetUniformVec3("u_Color", _colorChoose.GetColor2());
-		}
-		else if (i % 4 == 2)
-		{
-			s_shader->SetUniformVec3("u_Color", _colorChoose.GetColor3());
-		}
-		else
-		{
-			s_shader->SetUniformVec3("u_Color", _colorChoose.GetColor4());
-		}
-
 		GoblinEngine::Renderer::Submit(*s_vertexArray, *s_shader, _transforms[i].GetWorldMatrix());
 	}
 	GoblinEngine::Renderer::EndScene();
@@ -80,8 +71,8 @@ GoblinEngine::Transform* RenderCellLayer::CreateTransforms()
 		for (size_t j = 0; j < MAX_TRANSFORMS; j++)
 		{
 			int index = i * MAX_TRANSFORMS + j;
-			result[index].SetPosition(glm::vec3(j * 0.1f, i * 0.1f, 0));
-			result[index].SetScale(glm::vec3(0.4f));
+			result[index].SetPosition(glm::vec3(j * 0.23f, i * 0.23f, 0));
+			result[index].SetScale(glm::vec3(0.6f));
 		}
 	}
 
