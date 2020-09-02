@@ -2,48 +2,30 @@
 
 #include <fstream>
 #include <string>
-#include <sstream>
-#include "GoblinEngine\Core\Log.h"
 
 namespace GoblinEngine
 {
+	// Abstract class, parrent to all file classes.
+	// In ctor get filepath to use it in Load().
+	// To use object you need at first use metod load.
+	// Load() gets data from file and set it in object.
+	// To update data use Load() again.
 	class File
 	{
 	public:
-		File(std::string& path) : _path(path)
-		{
-		}
-		virtual ~File()
+		File(std::string path) : _path(path)
 		{
 		}
 
-		std::string& GetFilePath() { return _path; }
-		std::string& GetStringData() { return _data; }
+		std::string GetFilePath() const { return _path; }
 
-		virtual void Load()
-		{
-			std::ifstream fileStream;
-			fileStream.open(_path);
-			
-			if (fileStream.is_open())
-			{
-				GE_LOG_ERROR("Can't open file.");
-				return;
-			}
-			
-			std::stringstream stringStream;
-			stringStream << fileStream.rdbuf();
-			fileStream.close();
-			
-			_data = stringStream.str().c_str();
-		}
-		bool IsExist()
+		virtual void Load() = 0;
+		bool IsExist() const
 		{
 			struct stat buffer;
 			return (stat(_path.c_str(), &buffer) == 0);
 		}
 	private:
 		std::string _path;
-		unsigned char* _data;
 	};
 }

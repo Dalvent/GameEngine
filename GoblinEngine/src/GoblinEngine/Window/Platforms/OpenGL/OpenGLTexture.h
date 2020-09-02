@@ -1,6 +1,6 @@
 #pragma once
 #include "GoblinEngine/Window/Render/Texture.h"
-#include "GoblinEngine/Core/Image.h"
+#include "GoblinEngine/File/Image.h"
 #include <string>
 
 namespace GoblinEngine

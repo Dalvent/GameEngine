@@ -158,6 +158,7 @@
     <ClInclude Include="src\GoblinEngine\Events\KeyEvent.h" />
     <ClInclude Include="src\GoblinEngine\Events\MouseEvent.h" />
     <ClInclude Include="src\GoblinEngine\File\File.h" />
+    <ClInclude Include="src\GoblinEngine\File\TextFile.h" />
     <ClInclude Include="src\GoblinEngine\ImGUI\ImGUILayer.h" />
     <ClInclude Include="src\GoblinEngine\Window\Input\Input.h" />
     <ClInclude Include="src\GoblinEngine\Window\Input\KeyCode.h" />
@@ -590,10 +591,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GoblinEngine\Core\GameApplication.cpp" />
-    <ClCompile Include="src\GoblinEngine\File\Image.cpp" />
     <ClCompile Include="src\GoblinEngine\Core\LayerList.cpp" />
     <ClCompile Include="src\GoblinEngine\Core\Log.cpp" />
     <ClCompile Include="src\GoblinEngine\Core\Transform.cpp" />
+    <ClCompile Include="src\GoblinEngine\File\Image.cpp" />
+    <ClCompile Include="src\GoblinEngine\File\TextFile.cpp" />
     <ClCompile Include="src\GoblinEngine\ImGUI\ImGUIBuild.cpp" />
     <ClCompile Include="src\GoblinEngine\ImGUI\ImGUILayer.cpp" />
     <ClCompile Include="src\GoblinEngine\Window\Platforms\GLFW\GLFWInput.cpp" />

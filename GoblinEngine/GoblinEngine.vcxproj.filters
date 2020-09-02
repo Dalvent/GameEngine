@@ -1396,6 +1396,7 @@
     <ClInclude Include="src\GoblinEngine\File\Image.h">
       <Filter>src\GoblinEngine\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\GoblinEngine\File\TextFile.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GoblinEngine\Core\GameApplication.cpp">
@@ -1455,6 +1456,7 @@
     <ClCompile Include="src\GoblinEngine\Window\Platforms\OpenGL\OpenGLTexture.cpp">
       <Filter>src\GoblinEngine\Window\Platforms\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\GoblinEngine\File\TextFile.cpp" />
     <ClCompile Include="src\GoblinEngine\File\Image.cpp" />
   </ItemGroup>
 </Project>

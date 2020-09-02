@@ -1,7 +1,5 @@
 #include "pch.h"
 #include "OpenGLTexture.h"
-#include "GoblinEngine/Core/Image.h"
-
 #include "GoblinEngine/Window/Window.h"
 
 #include <GLAD/glad.h>

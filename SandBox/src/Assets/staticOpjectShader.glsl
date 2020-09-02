@@ -1,3 +1,4 @@
+#type vertex
 #version 410 core
 			
 layout(location = 0) in vec3 a_Position;
@@ -12,4 +13,19 @@ void main()
 {
 	gl_Position = u_ViewProjectionMatrix * u_Transform * vec4(a_Position, 1.0);
 	v_TexCoord = a_TexCoord;
+}
+
+#type fragment
+#version 410 core
+
+in vec2 v_TexCoord;
+
+out vec4 color;
+
+uniform sampler2D u_Texture;
+uniform vec3 u_Color;
+
+void main()
+{
+	color = texture(u_Texture, v_TexCoord);
 }

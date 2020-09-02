@@ -1,48 +1,17 @@
 #include "pch.h"
 #include "OpenGLShader.h"
 
+#include <chrono> 
 #include <glad/glad.h>
 #include <glm/gtc/type_ptr.hpp>
-
+#define TEST_COUNT 10000
 namespace GoblinEngine
 {
-	OpenGLShader::OpenGLShader(const std::string& vertexPath, const std::string& fragmentPath)
+	OpenGLShader::OpenGLShader(const TextFile& glslFile)
 	{
-		std::cout << vertexPath << std::endl;
-		std::cout << fragmentPath << std::endl;
-
-		// 1. retrieve the vertex/fragment source code from filePath
-		std::string vertexCode;
-		std::string fragmentCode;
-		std::ifstream vShaderFile;
-		std::ifstream fShaderFile;
-		// ensure ifstream objects can throw exceptions:
-		vShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-		fShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-		try
-		{
-			// open files
-			vShaderFile.open(vertexPath);
-			fShaderFile.open(fragmentPath);
-			std::stringstream vShaderStream, fShaderStream;
-			// read file's buffer contents into streams
-			vShaderStream << vShaderFile.rdbuf();
-			fShaderStream << fShaderFile.rdbuf();
-			// close file handlers
-			vShaderFile.close();
-			fShaderFile.close();
-			// convert stream into string
-			vertexCode = vShaderStream.str();
-			fragmentCode = fShaderStream.str();
-		}
-		catch (std::ifstream::failure e)
-		{
-			std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
-		}
-
-		Init(vertexCode, fragmentCode);
+		auto shaderCode = PreProcess(glslFile.GetData());
+		Compile(shaderCode[GL_VERTEX_SHADER], shaderCode[GL_FRAGMENT_SHADER]);
 	}
-
 	OpenGLShader::~OpenGLShader()
 	{
 		glDeleteProgram(_id);
@@ -78,40 +47,47 @@ namespace GoblinEngine
 	}
 	void OpenGLShader::SetUniformMat4(const std::string& name, const glm::mat4& value)
 	{
-		GLint location = glGetUniformLocation(_id, name.c_str());https://www.youtube.com/watch?v=238A-bHaB20
-		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(value));
-	}
-
-	std::string OpenGLShader::ReadFile(const std::string& filePath)
-	{
-		std::string code;
-		std::ifstream fileStream;
-		fileStream.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-		try
-		{
-			fileStream.open(filePath);
-			std::stringstream stringStream;
-			stringStream << fileStream.rdbuf();
-			fileStream.close();
-			code = stringStream.str();
-		}
-		catch (std::ifstream::failure e)
-		{
-			GE_LOG_ASSERT(true, "Can't open file!");
-		}
-		return code;
+		GLint location = glGetUniformLocation(_id, name.c_str()); https://www.youtube.com/watch?v=238A-bHaB20
+	glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(value));
 	}
 
 	std::unordered_map<GLenum, std::string> OpenGLShader::PreProcess(const std::string& source)
 	{
-		return std::unordered_map<GLenum, std::string>();
-	}
+		std::unordered_map<GLenum, std::string> shaderCode(2);
+		// Beginn and end of the viewing part of the shader code
+		
+		const char* typeToken = "#type";
+		size_t typeTokenLength = strlen(typeToken);
+		for (size_t i = 0; i < TEST_COUNT; i++)
+		{
+			size_t pos = source.find(typeToken, 0);
+			while (pos != std::string::npos)
+			{
+				size_t eol = source.find_first_of("\r\n", pos); //End of shader type declaration line
+				GE_LOG_CORE_ASSERT(eol != std::string::npos, "Syntax error");
+				size_t begin = pos + typeTokenLength + 1; //Start of shader type name (after "#type " keyword)
+				std::string type = source.substr(begin, eol - begin);
+				GE_LOG_CORE_ASSERT(ShaderTypeFromString(type), "Invalid shader type specified");
 
-	void OpenGLShader::Compile(const std::string& vertexCode, const std::string& fragmentCode)
+				size_t nextLinePos = source.find_first_not_of("\r\n", eol); //Start of shader code after shader type declaration line
+				GE_LOG_CORE_ASSERT(nextLinePos != std::string::npos, "Syntax error");
+				pos = source.find(typeToken, nextLinePos); //Start of next shader type declaration line
+
+				shaderCode[ShaderTypeFromString(type)] = (pos == std::string::npos) ? source.substr(nextLinePos) : source.substr(nextLinePos, pos - nextLinePos);
+			}
+
+		}
+		return shaderCode;
+	}
+	GLenum OpenGLShader::ShaderTypeFromString(std::string type)
 	{
-	}
+		if (type == "vertex") return GL_VERTEX_SHADER;
+		if (type == "fragment") return GL_FRAGMENT_SHADER;
 
-	void OpenGLShader::Init(const std::string& vertexCode, const std::string& fragmentCode)
+		GE_LOG_CORE_ASSERT(false, "Unown shader type, can't from {0} get OpenGL shader type!", type);
+		return GLenum();
+	}
+	void OpenGLShader::Compile(const std::string& vertexCode, const std::string& fragmentCode)
 	{
 		int vertexShader = glCreateShader(GL_VERTEX_SHADER);
 

@@ -2,6 +2,8 @@
 #include "GoblinEngine/Window/Render/Shader.h"
 #include <fstream>
 
+#include "GoblinEngine/File/TextFile.h"
+
 using GLenum = unsigned int;
 
 namespace GoblinEngine
@@ -9,7 +11,7 @@ namespace GoblinEngine
 	class OpenGLShader : public Shader
 	{
 	public:
-		OpenGLShader(const std::string& vertexPath, const std::string& fragmentPath);
+		OpenGLShader(const TextFile& glslFile);
 		~OpenGLShader();
 
 		void Bind() override;
@@ -23,8 +25,8 @@ namespace GoblinEngine
 	private:
 		unsigned int _id;
 	private:
-		std::string ReadFile(const std::string& filePath);
 		std::unordered_map<GLenum, std::string> PreProcess(const std::string& source);
+		GLenum ShaderTypeFromString(std::string type);
 		void Compile(const std::string& vertexCode, const std::string& fragmentCode);
 	};
 }

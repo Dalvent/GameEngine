@@ -19,7 +19,7 @@ namespace GoblinEngine
 	{
 	public:
 		Image(std::string filePath) : File(filePath) {};
-		virtual ~Image() {}
+		virtual ~Image();
 
 		int GetWidth() const { return _width; }
 		int GetHeight() const { return _height; }

@@ -5,11 +5,9 @@
 
 namespace GoblinEngine
 {
-	Image::Image(std::string filePath)
-	{
-	}
 	Image::~Image()
 	{
+		if (_data) stbi_image_free(_data);
 	}
 	void Image::Load()
 	{
@@ -27,9 +25,7 @@ namespace GoblinEngine
 		}
 		else
 		{
-			GE_LOG_CORE_ASSERT(true, "Unown image format!")
+			GE_LOG_CORE_ERROR("Unown image format!");
 		}
-
-		stbi_image_free(_data);
 	}
 }

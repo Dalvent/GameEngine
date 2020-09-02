@@ -15,7 +15,7 @@ namespace GoblinEngine
 	{
 		glfwMakeContextCurrent(p_window);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		GE_LOG_CORE_ASSERT("Failed to initialize GLAD!", status);
+		GE_LOG_CORE_ASSERT(status, "Failed to initialize GLAD!");
 	}
 
 	void OpenGLContext::SwapBuffer()

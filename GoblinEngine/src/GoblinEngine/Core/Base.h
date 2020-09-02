@@ -19,8 +19,8 @@
 #endif
 
 #ifdef GE_ENABLE_ASSERTS
-	#define GE_LOG_ASSERT(x, ...) { if(!(x)) { GE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-	#define GE_LOG_CORE_ASSERT(x, ...) { if(!(x)) { GE_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define GE_LOG_ASSERT(x, ...) if(!(x)) { GE_LOG_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); }
+	#define GE_LOG_CORE_ASSERT(x, ...) if(!(x)) { GE_LOG_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); }
 #else
 	#define GE_LOG_ASSERT(x, ...)
 	#define GE_LOG_CORE_ASSERT(x, ...)

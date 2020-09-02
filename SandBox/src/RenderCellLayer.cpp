@@ -39,11 +39,13 @@ void RenderCellLayer::OnAttach()
 	s_vertexArray->AddVertexBuffer(vertexBuffer);
 	s_vertexArray->SetIndexBuffer(indexBuffer);
 
-	s_shader.reset(new GoblinEngine::OpenGLShader(
-		"C:\\dev\\GoblinEngine\\SandBox\\src\\Shader\\test.vert",
-		"C:\\dev\\GoblinEngine\\SandBox\\src\\Shader\\test.frag"));
+	TextFile shaderFile("C:\\dev\\GoblinEngine\\Sandbox\\src\\Assets\\staticOpjectShader.glsl");
+	shaderFile.Load();
+	s_shader.reset(new GoblinEngine::OpenGLShader(shaderFile));
 	
-	s_texture = GE_RENDER_API.CreteTexture2D(Image("C:\\Users\\dencr\\Desktop\\0\\Pictures\\MyPict\\Other\\BananaMan.png"));
+	Image textureFile("C:\\dev\\GoblinEngine\\Sandbox\\src\\Assets\\waterTexture.jpg");
+	textureFile.Load();
+	s_texture = GE_RENDER_API.CreteTexture2D(textureFile);
 	s_texture->Bind();
 	std::static_pointer_cast<OpenGLShader>(s_shader)->SetUniformInt("u_Texture", 0);
 }

@@ -30,7 +30,6 @@ namespace GoblinEngine
 		{
 			int success = glfwInit();
 			GE_LOG_CORE_ASSERT(success, "Could not intialize GLFW!");
-			
 			glfwSetErrorCallback([](int error, const char* description) 
 			{
 				GE_LOG_CORE_ERROR("GLFW ERROR ({0}): {1}", error, description);
@@ -42,7 +41,7 @@ namespace GoblinEngine
 		u_context->Init();
 
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		GE_LOG_CORE_ASSERT("Failed to initialize GLAD!", status);
+		GE_LOG_CORE_ASSERT(status, "Failed to initialize GLAD!");
 
 		glfwSetWindowUserPointer(_glfwWindow, &_data);
 		SetVSync(true);

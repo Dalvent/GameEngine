@@ -138,6 +138,13 @@
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Assets\staticOpjectShader.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\Users\dencr\Desktop\0\Pictures\MyPict\Cats\CoolCat.png" />
+    <Image Include="src\Assets\waterTexture.jpg" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

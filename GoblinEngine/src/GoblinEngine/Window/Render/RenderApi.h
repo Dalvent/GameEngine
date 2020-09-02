@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GoblinEngine/Core/Image.h"
+#include "GoblinEngine/File/Image.h"
 #include "GoblinEngine/Window/Render/GraphicsContext.h"
 #include "GoblinEngine/Window/Render/Shader.h"
 #include "GoblinEngine/Window/Render/Buffer.h"
