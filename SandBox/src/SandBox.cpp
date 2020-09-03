@@ -1,9 +1,11 @@
 #include "SandBox.h"
 #include <glm/vec2.hpp>
 
+using namespace IronCat;
+
 void SandBox::OnBegin()
 {
-	GE_RENDER_API.SetClearColor(glm::vec4(0.2f, 0.2f, 0.2f, 1));
+	RenderApi::SetClearColor(glm::vec4(0.2f, 0.2f, 0.2f, 1));
 }
 
 void SandBox::OnEnd()
@@ -12,38 +14,38 @@ void SandBox::OnEnd()
 
 void SandBox::OnBeginRenderFrame()
 {
-	if (GE_INPUT.IsKeyPressed(GE_KEY_W))
+	if (IC_INPUT.IsKeyPressed(IC_KEY_W))
 	{
-		s_camera->SetPosition(s_camera->GetPosition() + glm::vec3(0, 1.0f, 0) * GE_DELTATIME);
+		s_camera->SetPosition(s_camera->GetPosition() + glm::vec3(0, 1.0f, 0) * IC_DELTATIME);
 	}
 
-	if (GE_INPUT.IsKeyPressed(GE_KEY_A))
+	if (IC_INPUT.IsKeyPressed(IC_KEY_A))
 	{
-		s_camera->SetPosition(s_camera->GetPosition() + glm::vec3(-1.0f, 0, 0) * GE_DELTATIME);
+		s_camera->SetPosition(s_camera->GetPosition() + glm::vec3(-1.0f, 0, 0) * IC_DELTATIME);
 	}
 
-	if (GE_INPUT.IsKeyPressed(GE_KEY_S))
+	if (IC_INPUT.IsKeyPressed(IC_KEY_S))
 	{
-		s_camera->SetPosition(s_camera->GetPosition() + glm::vec3(0, -1.0f, 0) * GE_DELTATIME);
+		s_camera->SetPosition(s_camera->GetPosition() + glm::vec3(0, -1.0f, 0) * IC_DELTATIME);
 	}
 
-	if (GE_INPUT.IsKeyPressed(GE_KEY_D))
+	if (IC_INPUT.IsKeyPressed(IC_KEY_D))
 	{
-		s_camera->SetPosition(s_camera->GetPosition() + glm::vec3(1.0f, 0, 0) * GE_DELTATIME);
+		s_camera->SetPosition(s_camera->GetPosition() + glm::vec3(1.0f, 0, 0) * IC_DELTATIME);
 	}
 
-	if (GE_INPUT.IsKeyPressed(GE_KEY_Q))
+	if (IC_INPUT.IsKeyPressed(IC_KEY_Q))
 	{
-		s_camera->SetRotaion(s_camera->GetRotation() + 100.0f * GE_DELTATIME);
+		s_camera->SetRotaion(s_camera->GetRotation() + 15.0f * IC_DELTATIME);
 	}
 
-	if (GE_INPUT.IsKeyPressed(GE_KEY_E))
+	if (IC_INPUT.IsKeyPressed(IC_KEY_E))
 	{
-		s_camera->SetRotaion(s_camera->GetRotation() + -100.0f * GE_DELTATIME);
+		s_camera->SetRotaion(s_camera->GetRotation() + -15.0f * IC_DELTATIME);
 	}
 }
 
 void SandBox::OnEndRenderFrame()
 {
-	GE_RENDER_API.Clear();
+	RenderApi::Clear();
 }

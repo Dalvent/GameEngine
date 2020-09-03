@@ -1,11 +1,11 @@
-#include <GoblinEngine.h>
-#include <GoblinEngine/Core/EnteryPoint.h>
+#include <IronCat.h>
+#include <IronCat/Core/EnteryPoint.h>
 
 #include "SandBox.h"
 #include "RenderCellLayer.h"
 #include "ColorChooseLayer.h"
 
-void GoblinEngine::SetupAppSettings(GoblinEngine::GameApplication& app)
+void IronCat::SetupAppSettings(IronCat::GameApplication& app)
 {
 	auto* gameMode = new SandBox();
 	auto* colorLayer = new ColorChooseLayer();

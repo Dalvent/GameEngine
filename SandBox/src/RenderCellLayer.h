@@ -1,13 +1,13 @@
 #pragma once
-#include <GoblinEngine.h>
+#include <IronCat.h>
 #include <memory>
 #include "ColorChooseLayer.h"
 
-class RenderCellLayer : public GoblinEngine::Layer
+class RenderCellLayer : public IronCat::Layer
 {
 public:
-	RenderCellLayer(GoblinEngine::Ref<GoblinEngine::OrthogriphicCamera> camera,
-		ColorChooseLayer& colorChoose) : GoblinEngine::Layer("RenderTriangleLayer"),
+	RenderCellLayer(IronCat::Ref<IronCat::OrthogriphicCamera> camera,
+		ColorChooseLayer& colorChoose) : IronCat::Layer("RenderTriangleLayer"),
 		s_camera(camera), _colorChoose(colorChoose)
 	{
 	}
@@ -15,13 +15,13 @@ public:
 	void OnUpdate() override;
 	void OnDetach() override;
 private:
-	GoblinEngine::Transform* CreateTransforms();
+	IronCat::Transform* CreateTransforms();
 private:
-	GoblinEngine::Ref<GoblinEngine::Shader> s_shader;
-	GoblinEngine::Ref<GoblinEngine::VertexArray> s_vertexArray;
-	GoblinEngine::Ref<GoblinEngine::OrthogriphicCamera> s_camera;
-	GoblinEngine::Ref<GoblinEngine::Texture> s_texture;
+	IronCat::Ref<IronCat::Shader> s_shader;
+	IronCat::Ref<IronCat::VertexArray> s_vertexArray;
+	IronCat::Ref<IronCat::OrthogriphicCamera> s_camera;
+	IronCat::Ref<IronCat::Texture> s_texture;
 	
-	GoblinEngine::Transform* _transforms;
+	IronCat::Transform* _transforms;
 	ColorChooseLayer& _colorChoose;
 };

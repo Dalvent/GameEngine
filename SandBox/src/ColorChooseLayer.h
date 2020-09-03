@@ -1,12 +1,12 @@
 #pragma once
-#include <GoblinEngine.h>
+#include <IronCat.h>
 #include <memory>
 
-class ColorChooseLayer : public GoblinEngine::Layer
+class ColorChooseLayer : public IronCat::Layer
 {
 public:
 	ColorChooseLayer() :
-		GoblinEngine::Layer("ColorChooseLayer")
+		IronCat::Layer("ColorChooseLayer")
 	{
 	}
 	void OnImGuiRender() override;

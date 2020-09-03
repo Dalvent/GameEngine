@@ -1,4 +1,4 @@
-workspace "GoblinEngine"
+workspace "IronCat"
     architecture "x86_64"
     startproject "SandBox"
 
@@ -12,17 +12,17 @@ workspace "GoblinEngine"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
-IncludeDir["GLFW"] = "GoblinEngine/vendor/GLFW/include"
-IncludeDir["GLAD"] = "GoblinEngine/vendor/GLAD/include"
-IncludeDir["GLM"] = "GoblinEngine/vendor/GLM"
-IncludeDir["ImGUI"] = "GoblinEngine/vendor/ImGUI"
+IncludeDir["GLFW"] = "IronCat/vendor/GLFW/include"
+IncludeDir["GLAD"] = "IronCat/vendor/GLAD/include"
+IncludeDir["GLM"] = "IronCat/vendor/GLM"
+IncludeDir["ImGUI"] = "IronCat/vendor/ImGUI"
 
-include "GoblinEngine/vendor/GLFW"
-include "GoblinEngine/vendor/GLAD"
-include "GoblinEngine/vendor/ImGUI"
+include "IronCat/vendor/GLFW"
+include "IronCat/vendor/GLAD"
+include "IronCat/vendor/ImGUI"
 
-project "GoblinEngine"
-    location "GoblinEngine"
+project "IronCat"
+    location "IronCat"
     kind "StaticLib"
 	language "C++"
 	cppdialect "C++17"
@@ -32,7 +32,7 @@ project "GoblinEngine"
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
     pchheader "pch.h"
-    pchsource "GoblinEngine/src/pch.cpp"
+    pchsource "IronCat/src/pch.cpp"
     
     files
     {
@@ -69,8 +69,9 @@ project "GoblinEngine"
 
         defines
         {
-            "GE_PLATFORM_WINDOWS",
-            "GE_BUILD_DLL",
+            "IC_PLATFORM_WINDOWS",
+            "IC_BUILD_DLL",
+            "IC_ENABLE_ASSERTS",
             "GLFW_INCLUDE_NONE"
         }
 
@@ -112,20 +113,21 @@ project "Sandbox"
     
     defines
     {
-        "GE_PLATFORM_WINDOWS"
+        "IC_PLATFORM_WINDOWS",
+        "IC_PLATFORM_WINDOWS"
     }
 
     includedirs
     {
-        "GoblinEngine/src",
-        "GoblinEngine/vendor/spdlog/include",
+        "IronCat/src",
+        "IronCat/vendor/spdlog/include",
         "%{IncludeDir.GLM}",
         "%{IncludeDir.ImGUI}"
     }
 
     links
     {
-        "GoblinEngine",
+        "IronCat",
         "ImGui",
     }
     
@@ -136,21 +138,21 @@ project "Sandbox"
     
         defines
         {
-            "GE_PLATFORM_WINDOWS"
+            "IC_PLATFORM_WINDOWS"
         }
 
         
     filter "configurations:Debug"
-        defines "GE_DEBUG"
+        defines "IC_DEBUG"
         buildoptions "/MDd"
         symbols "on"
     
     filter "configurations:Relese"
-        defines "GE_RELEASE"
+        defines "IC_RELEASE"
         buildoptions "/MD"
         optimize "on" 
     
     filter "configurations:Dis"
-        defines "GE_DIST"
+        defines "IC_DIST"
         buildoptions "/MD"
         optimize "on"

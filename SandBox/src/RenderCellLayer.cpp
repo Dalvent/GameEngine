@@ -1,8 +1,7 @@
 #include "RenderCellLayer.h"
-#include <GoblinEngine/Window/Platforms/OpenGL/OpenGLShader.h>
-#include <GoblinEngine/Window/Platforms/OpenGL/OpenGLTexture.h>
+#include <IronCat\Platforms\OpenGL\OpenGLShader.h>
 
-using namespace GoblinEngine;
+using namespace IronCat;
 
 #define MAX_TRANSFORMS 1
 
@@ -16,7 +15,7 @@ void RenderCellLayer::OnAttach()
 		-1.0f, -1.0f, 0.0f,	   0.0f,  0.0f,
 		-1.0f,  1.0f, 0.0f,	   0.0f,  1.0f
 	};
-	auto vertexBuffer = GE_RENDER_API.CreateVertexBuffer(vertices, sizeof(vertices) / sizeof(float));
+	auto vertexBuffer = RenderApi::CreateVertexBuffer(vertices, sizeof(vertices) / sizeof(float));
 
 	vertexBuffer->SetLayout(Ref<BufferElementsLayout>(
 		Ref<BufferElementsLayout>
@@ -33,40 +32,38 @@ void RenderCellLayer::OnAttach()
 		0, 1, 3,
 		1, 2, 3
 	};
-	auto indexBuffer = GE_RENDER_API.CreateIndexBuffer(indices, 6);
+	auto indexBuffer = RenderApi::CreateIndexBuffer(indices, 6);
 
-	s_vertexArray = GE_RENDER_API.CreateVertexArray();
+	s_vertexArray = RenderApi::CreateVertexArray();
 	s_vertexArray->AddVertexBuffer(vertexBuffer);
 	s_vertexArray->SetIndexBuffer(indexBuffer);
 
-	TextFile shaderFile("C:\\dev\\GoblinEngine\\Sandbox\\src\\Assets\\staticOpjectShader.glsl");
-	shaderFile.Load();
-	s_shader.reset(new GoblinEngine::OpenGLShader(shaderFile));
+	std::string shaderPath = "C:\\dev\\IronCat\\Sandbox\\src\\Assets\\staticOpjectShader.glsl";
+	s_shader = RenderApi::CreteShader(shaderPath);
 	
-	Image textureFile("C:\\dev\\GoblinEngine\\Sandbox\\src\\Assets\\waterTexture.jpg");
-	textureFile.Load();
-	s_texture = GE_RENDER_API.CreteTexture2D(textureFile);
+	Image textureFile("C:\\dev\\IronCat\\Sandbox\\src\\Assets\\waterTexture.jpg");
+	s_texture = RenderApi::CreteTexture2D(textureFile);
 	s_texture->Bind();
 	std::static_pointer_cast<OpenGLShader>(s_shader)->SetUniformInt("u_Texture", 0);
 }
 
 void RenderCellLayer::OnUpdate()
 {
-	GoblinEngine::Renderer::BeginScene(*s_camera);
+	Renderer::BeginScene(*s_camera);
 	for (size_t i = 0; i < MAX_TRANSFORMS * MAX_TRANSFORMS; i++)
 	{
-		GoblinEngine::Renderer::Submit(*s_vertexArray, *s_shader, _transforms[i].GetWorldMatrix());
+		Renderer::Submit(*s_vertexArray, *s_shader, _transforms[i].GetWorldMatrix());
 	}
-	GoblinEngine::Renderer::EndScene();
+	Renderer::EndScene();
 }
 
 void RenderCellLayer::OnDetach()
 {
 }
 
-GoblinEngine::Transform* RenderCellLayer::CreateTransforms()
+Transform* RenderCellLayer::CreateTransforms()
 {
-	auto* result = new GoblinEngine::Transform[MAX_TRANSFORMS * MAX_TRANSFORMS];
+	auto* result = new Transform[MAX_TRANSFORMS * MAX_TRANSFORMS];
 
 	for (size_t i = 0; i < MAX_TRANSFORMS; i++)
 	{

@@ -78,8 +78,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>GE_PLATFORM_WINDOWS;GE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\GoblinEngine\src;..\GoblinEngine\vendor\spdlog\include;..\GoblinEngine\vendor\GLM;..\GoblinEngine\vendor\ImGUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>IC_PLATFORM_WINDOWS;IC_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\IronCat\src;..\IronCat\vendor\spdlog\include;..\IronCat\vendor\GLM;..\IronCat\vendor\ImGUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -95,8 +95,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>GE_PLATFORM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\GoblinEngine\src;..\GoblinEngine\vendor\spdlog\include;..\GoblinEngine\vendor\GLM;..\GoblinEngine\vendor\ImGUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>IC_PLATFORM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\IronCat\src;..\IronCat\vendor\spdlog\include;..\IronCat\vendor\GLM;..\IronCat\vendor\ImGUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -109,8 +109,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>GE_PLATFORM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\GoblinEngine\src;..\GoblinEngine\vendor\spdlog\include;..\GoblinEngine\vendor\GLM;..\GoblinEngine\vendor\ImGUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>IC_PLATFORM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\IronCat\src;..\IronCat\vendor\spdlog\include;..\IronCat\vendor\GLM;..\IronCat\vendor\ImGUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -131,19 +131,12 @@
     <ClCompile Include="src\SetupAppSettings.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GoblinEngine\GoblinEngine.vcxproj">
-      <Project>{F6AA5A13-E20D-EAB7-8B93-226E77D5B53A}</Project>
+    <ProjectReference Include="..\IronCat\IronCat.vcxproj">
+      <Project>{B5231D09-2103-9CA4-2A1B-277B96790206}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\GoblinEngine\vendor\ImGUI\ImGui.vcxproj">
+    <ProjectReference Include="..\IronCat\vendor\ImGUI\ImGui.vcxproj">
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\Assets\staticOpjectShader.glsl" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\..\..\Users\dencr\Desktop\0\Pictures\MyPict\Cats\CoolCat.png" />
-    <Image Include="src\Assets\waterTexture.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
