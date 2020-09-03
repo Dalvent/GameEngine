@@ -1,2 +1,2 @@
-call IronCat\vendor\Premake\premake\premake5.exe vs2019
+call IronCat\vendor\Premake\premake5.exe vs2019
 PAUSE
