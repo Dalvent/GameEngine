@@ -36,12 +36,12 @@ void SandBox::OnBeginRenderFrame()
 
 	if (IC_INPUT.IsKeyPressed(IC_KEY_Q))
 	{
-		s_camera->SetRotaion(s_camera->GetRotation() + 15.0f * IC_DELTATIME);
+		s_camera->SetRotaion(s_camera->GetRotation() + 5.0f * IC_DELTATIME);
 	}
 
 	if (IC_INPUT.IsKeyPressed(IC_KEY_E))
 	{
-		s_camera->SetRotaion(s_camera->GetRotation() + -15.0f * IC_DELTATIME);
+		s_camera->SetRotaion(s_camera->GetRotation() + -5.0f * IC_DELTATIME);
 	}
 }
 

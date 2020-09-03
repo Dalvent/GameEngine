@@ -1,12 +1,12 @@
-[submodule "GoblinEngine/vendor/spdlog"]
-	path = GoblinEngine/vendor/spdlog
+[submodule "IronCat/vendor/spdlog"]
+	path = IronCat/vendor/spdlog
 	url = https://github.com/gabime/spdlog.git
-[submodule "GoblinEngine/vendor/GLFW"]
-	path = GoblinEngine/vendor/GLFW
+[submodule "IronCat/vendor/GLFW"]
+	path = IronCat/vendor/GLFW
 	url = https://github.com/TheCherno/GLFW.git
-[submodule "GoblinEngine/vendor/ImGUI"]
-	path = GoblinEngine/vendor/ImGUI
+[submodule "IronCat/vendor/ImGUI"]
+	path = IronCat/vendor/ImGUI
 	url = https://github.com/TheCherno/imgui.git
-[submodule "GoblinEngine/vendor/GoblinEngine/vendor/GLM"]
-	path = GoblinEngine/vendor/GLM
+[submodule "IronCat/vendor/IronCat/vendor/GLM"]
+	path = IronCat/vendor/GLM
 	url = https://github.com/g-truc/glm.git

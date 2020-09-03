@@ -20,4 +20,20 @@ namespace IronCat
 		}
 		_instance->_usedApi = apiType;
 	}
+
+	Ref<Texture2D> RenderApi::CreteTexture2D(std::string name, const Image& image)
+	{
+		auto texture = _instance->CreteTexture2DImpl(image);
+		RenderApiLibrary::AddTexture(name, texture);
+		return texture;
+	}
+	Ref<Shader> RenderApi::CreteShader(std::string name, const std::string filePath)
+	{
+		auto shader = _instance->CreteShaderImpl(filePath);
+		RenderApiLibrary::AddShader(name, shader);
+		return shader;
+	}
+
+	std::unordered_map<std::string, Ref<Shader>> RenderApiLibrary::_shaders;
+	std::unordered_map<std::string, Ref<Texture2D>> RenderApiLibrary::_textures;
 }

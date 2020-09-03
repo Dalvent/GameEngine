@@ -3,7 +3,7 @@
 
 using namespace IronCat;
 
-#define MAX_TRANSFORMS 1
+#define MAX_TRANSFORMS 10
 
 void RenderCellLayer::OnAttach()
 {
@@ -39,10 +39,10 @@ void RenderCellLayer::OnAttach()
 	s_vertexArray->SetIndexBuffer(indexBuffer);
 
 	std::string shaderPath = "C:\\dev\\IronCat\\Sandbox\\src\\Assets\\staticOpjectShader.glsl";
-	s_shader = RenderApi::CreteShader(shaderPath);
+	s_shader = RenderApi::CreteShader("standart", shaderPath);
 	
-	Image textureFile("C:\\dev\\IronCat\\Sandbox\\src\\Assets\\waterTexture.jpg");
-	s_texture = RenderApi::CreteTexture2D(textureFile);
+	Image textureFile("C:\\dev\\IronCat\\Sandbox\\src\\Assets\\MinerBlue.png");
+	s_texture = RenderApi::CreteTexture2D("water", textureFile);
 	s_texture->Bind();
 	std::static_pointer_cast<OpenGLShader>(s_shader)->SetUniformInt("u_Texture", 0);
 }
@@ -70,7 +70,7 @@ Transform* RenderCellLayer::CreateTransforms()
 		for (size_t j = 0; j < MAX_TRANSFORMS; j++)
 		{
 			int index = i * MAX_TRANSFORMS + j;
-			result[index].SetPosition(glm::vec3(j * 0.23f, i * 0.23f, 0));
+			result[index].SetPosition(glm::vec3(j * 0.2f, i * 0.2f, 0));
 			result[index].SetScale(glm::vec3(0.6f));
 		}
 	}

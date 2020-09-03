@@ -7,7 +7,7 @@
 #include "IronCat/Render/Texture.h"
 
 #include <glm/glm.hpp>
-
+#include <unordered_map>
 namespace IronCat
 {
 	enum class SupportedRenderApiType
@@ -58,14 +58,8 @@ namespace IronCat
 		{
 			return _instance->CreateVertexArrayImpl();
 		}
-		static Ref<Texture2D> CreteTexture2D(const Image& image)
-		{
-			return _instance->CreteTexture2DImpl(image);
-		}
-		static Ref<Shader> CreteShader(const std::string filePath)
-		{
-			return _instance->CreteShaderImpl(filePath);
-		}
+		static Ref<Texture2D> CreteTexture2D(std::string name, const Image& image);
+		static Ref<Shader> CreteShader(std::string name, const std::string filePath);
 	protected:
 		virtual void SetClearColorImpl(const glm::vec4& color) = 0;
 		virtual void ClearImpl() = 0;
@@ -89,30 +83,25 @@ namespace IronCat
 	class RenderApiLibrary
 	{
 	public:
-		static void AddShader(std::string shaderName, Ref<Shader> s_shader)
+		static void AddShader(std::string name, Ref<Shader> s_shader)
 		{
-
+			_shaders[name] = s_shader;
 		}
-		static void RemoveShader(std::string shaderName)
+		static Ref<Shader> GetShader(std::string name)
 		{
-
-		}
-		static void RemoveShader(Ref<Shader> s_shader)
-		{
-
+			return _shaders[name];
 		}
 
-		static void AddTexture(std::string shaderName, Ref<Shader> s_shader)
+		static void AddTexture(std::string name, Ref<Texture2D> s_texture)
 		{
-
+			_textures[name] = s_texture;
 		}
-		static void RemoveTexture(std::string shaderName)
+		static Ref<Texture> GetTexture(std::string name)
 		{
-
+			return _textures[name];
 		}
-		static void RemoveTexture(Ref<Shader> s_shader)
-		{
-
-		}
+	private:
+		static std::unordered_map<std::string, Ref<Shader>> _shaders;
+		static std::unordered_map<std::string, Ref<Texture2D>> _textures;
 	};
 }
