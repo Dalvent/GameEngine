@@ -8,6 +8,3 @@ The following features are implemented:
 - UI.
 - Event system.
 - Logging.
-- Уровень списка 1. Пункт 1.
-- Уровень списка 1. Пункт 2.
-- Уровень списка 1. Пункт 3.
